@@ -18,6 +18,7 @@
             --red-glow: #ff5252;
             --orange: #ff6d00;
             --green: #00c853;
+            --blue: #3b82f6;
             --border: #1e1e2e;
             --radius: 12px;
         }
@@ -121,6 +122,8 @@
         }
         th { text-align: left; padding: 10px 14px; background: var(--surface2); font-weight: 600; color: #ccc; }
         td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text2); }
+        .drain { color: #ff5252; font-weight: 700; }
+        .winner { color: #ff9100; font-weight: 700; }
 
         .vote-bar { display: flex; height: 20px; border-radius: 4px; overflow: hidden; background: var(--surface2); margin-top: 10px; }
         .vote-bar .pro { background: #c62828; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; }
@@ -162,13 +165,15 @@
     <div class="container">
         <div class="logo">Mapa<span>Real</span></div>
         <ul class="nav-links">
+            <li><a href="#impostos">Quem Te Empobreceu</a></li>
             <li><a href="#sistema">Quem Manda</a></li>
             <li><a href="#votacoes">Votações</a></li>
             <li><a href="#estados">Regiões</a></li>
             <li><a href="#cidades">Cidades</a></li>
+            <li><a href="#povo">O Povo</a></li>
             <li><a href="#plano">Plano Nacional</a></li>
             <li><a href="#regras">Regras</a></li>
-            <li><a href="#sem-revolucao">Mudar sem Revolução</a></li>
+            <li><a href="#sem-revolucao">Mudar</a></li>
         </ul>
     </div>
 </nav>
@@ -180,8 +185,73 @@
     </div>
 </section>
 
+<!-- NOVA SEÇÃO: QUEM AUMENTOU IMPOSTOS E CORROEU PODER DE COMPRA -->
+<section id="impostos">
+    <div class="container">
+        <span class="section-label label-red">DESTAQUE ESTRATÉGICO</span>
+        <h2>O governo que mais aumentou impostos e corroeu seu poder de compra</h2>
+        <p class="subtitle">Comparação direta com base em dados oficiais (IBGE, Tesouro Nacional, Receita Federal). Excluídos choques externos: pandemia, guerra, commodities. Apenas decisões domésticas.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Governo Temer (2016-2018)</th>
+                    <th>Governo Bolsonaro (2019-2022)</th>
+                    <th>Governo Lula 3 (2023-2025)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Carga Tributária (% PIB)</strong></td>
+                    <td>32,3% (2015) → 32,1%</td>
+                    <td>31,8% (2019) → 32,9% (2022)</td>
+                    <td class="drain">33,2% (2024) — RECORDE HISTÓRICO</td>
+                </tr>
+                <tr>
+                    <td><strong>Impostos criados no mandato</strong></td>
+                    <td>Nenhum relevante</td>
+                    <td>Nenhum relevante</td>
+                    <td class="drain">Taxa de 44% sobre compras internacionais (fim da isenção); Reoneração da folha; MP das subvenções do ICMS</td>
+                </tr>
+                <tr>
+                    <td><strong>Tabela do IRPF</strong></td>
+                    <td>Congelada (herança Dilma)</td>
+                    <td>Congelada por 4 anos</td>
+                    <td class="drain">Corrigida só para até 2 salários mínimos. Classe média segue congelada.</td>
+                </tr>
+                <tr>
+                    <td><strong>Inflação Alimentos (IPCA, dentro do domicílio)</strong></td>
+                    <td>-1,87% (2017, deflação)</td>
+                    <td>+13,4% (2022)</td>
+                    <td class="drain">+18% acumulado (jan/23 a fev/25). Café +60%, laranja +100%.</td>
+                </tr>
+                <tr>
+                    <td><strong>Arrecadação Total (ano mais recente)</strong></td>
+                    <td>R$ 1,9 tri (2018)</td>
+                    <td>R$ 3,2 tri (2022)</td>
+                    <td class="drain">R$ 3,9 tri (2024) — RECORDE HISTÓRICO</td>
+                </tr>
+                <tr>
+                    <td><strong>Poder de compra do salário mínimo (cesta básica)</strong></td>
+                    <td>Estável</td>
+                    <td>Queda acentuada</td>
+                    <td class="drain">Queda contínua (preço dos alimentos sobe mais que o reajuste)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="big-alert">
+            <span class="alert-icon">📊</span>
+            <div>
+                <strong>Veredicto baseado em dados:</strong> O governo Lula 3 entrega o <strong>recorde histórico de carga tributária (33,2% do PIB)</strong>, a <strong>maior inflação de alimentos desde o Plano Real</strong>, e <strong>criou novos impostos</strong> sobre consumo popular que não existiam. Nenhum outro governo recente aumentou tanto a mordida do Estado enquanto o poder de compra despencava. A conta é paga por você — e os números não têm partido.
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- SISTEMA -->
-<section id="sistema">
+<section id="sistema" style="background: var(--surface);">
     <div class="container">
         <span class="section-label label-red">O PODER REAL</span>
         <h2>Quem realmente manda no país</h2>
@@ -243,7 +313,7 @@
 </section>
 
 <!-- VOTAÇÕES INÚTEIS -->
-<section id="votacoes" style="background: var(--surface);">
+<section id="votacoes">
     <div class="container">
         <span class="section-label label-orange">VOTAÇÕES QUE PIORAM SUA VIDA</span>
         <h2>Os deputados que votam contra você — e como</h2>
@@ -331,7 +401,7 @@
 </section>
 
 <!-- ESTADOS -->
-<section id="estados">
+<section id="estados" style="background: var(--surface);">
     <div class="container">
         <span class="section-label label-orange">MAL-ESTAR FEDERATIVO</span>
         <h2>Quem paga e quem recebe</h2>
@@ -386,7 +456,7 @@
 </section>
 
 <!-- CIDADES -->
-<section id="cidades" style="background: var(--surface);">
+<section id="cidades">
     <div class="container">
         <span class="section-label label-red">CIDADES ZUMBI</span>
         <h2>Prefeituras que só existem por causa de repasse</h2>
@@ -429,6 +499,54 @@
     </div>
 </section>
 
+<!-- O POVO NEM SEMPRE ESTÁ CERTO + POPULISMO -->
+<section id="povo" style="background: var(--surface);">
+    <div class="container">
+        <span class="section-label label-blue">PSICOLOGIA DAS MASSAS</span>
+        <h2>O povo nem sempre está certo — e o populismo usou isso contra você</h2>
+        <p class="subtitle">A democracia não é a ditadura da maioria. É um sistema que exige informação. Quando o povo é intoxicado por populismo, ele elege o próprio algoz — e aplaude.</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🧠</div>
+                <h3>O viés do presente</h3>
+                <p style="font-size:0.9rem; color:var(--text2);">O cérebro humano prefere <strong>prazer imediato</strong> a ganho futuro. Populistas exploram isso oferecendo auxílio, aumento salarial, subsídio — tudo para agora. A conta vem depois, com inflação e imposto. E aí o mesmo povo reclama do governo seguinte.</p>
+                <div class="detail">
+                    <span class="tagline">Exemplo real</span>
+                    Em 2014, o governo Dilma segurou a gasolina e a energia artificialmente. O povo aplaudiu. Em 2015, a conta veio: inflação de 10,7% e recessão. O populismo é um empréstimo que o povo toma de si mesmo — com juros altíssimos.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎭</div>
+                <h3>O populismo que quebrou o futuro</h3>
+                <p style="font-size:0.9rem; color:var(--text2);">Desde 2006, o Brasil gasta mais do que arrecada. A dívida bruta saltou de <strong>R$ 1,3 tri (2006)</strong> para <strong>R$ 8,8 tri (2024)</strong>. Cada governo prometeu "investir no social" e entregou rombo. O resultado: juros altos, inflação, perda de poder de compra.</p>
+                <div class="detail">
+                    <span class="tagline">O ciclo</span>
+                    O político promete fácil → o povo elege → o governo gasta o que não tem → o Banco Central sobe os juros → o crédito some → o pobre paga a conta. Esse ciclo se repete há 20 anos. E o povo continua votando em quem promete mais.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">📉</div>
+                <h3>A maioria pode estar errada</h3>
+                <p style="font-size:0.9rem; color:var(--text2);">Pesquisas mostram que <strong>70% dos brasileiros</strong> não sabem o que é a taxa Selic. <strong>60%</strong> não sabem quanto pagam de imposto. Uma população desinformada é presa fácil para quem oferece pão e circo — e a história mostra que isso nunca termina bem.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    A Alemanha tem educação fiscal obrigatória desde o ensino médio. O cidadão aprende a ler orçamento público. Resultado: carga tributária similar à do Brasil (37%), mas serviços públicos de qualidade. A diferença? O povo sabe cobrar.
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 20px;">
+            <span class="info-icon">⚡</span>
+            <div>
+                <strong>A fábrica de populismo não fecha.</strong> O Congresso aprovou em 2023 o "orçamento secreto turbinado" enquanto discursava sobre responsabilidade fiscal. Em 2024, reajustou o próprio salário. A diferença entre direita e esquerda no Brasil é só o símbolo na bandeira. O método é o mesmo: prometer para a massa, cobrar do contribuinte, proteger a casta.
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- PLANO NACIONAL -->
 <section id="plano">
     <div class="container">
@@ -443,7 +561,6 @@
                 • Fim de supersalários: teto constitucional de <strong>R$ 41 mil</strong> para todos os poderes, sem penduricalhos.<br>
                 • Avaliação de desempenho com demissão por ineficiência comprovada.<br>
                 • Fim de férias de 60 dias para juízes e promotores.<br>
-                • Redução de 30% no número de cargos comissionados em 5 anos.<br>
                 <strong>Economia estimada: R$ 80 bilhões/ano.</strong>
             </p>
         </div>
@@ -453,7 +570,6 @@
             <p style="font-size:0.9rem; color:var(--text2);">
                 Estados que geram superávit devem ficar com <strong>70% do que produzem</strong>, não 50%.<br>
                 • Redução gradual das transferências obrigatórias para estados com mais de 10 anos de déficit.<br>
-                • Fundo de Desenvolvimento Regional com critérios de desempenho.<br>
                 <strong>Impacto: R$ 120 bilhões/ano realocados para infraestrutura produtiva.</strong>
             </p>
         </div>
@@ -461,7 +577,6 @@
         <div class="plan-card">
             <h4>3. Reforma Tributária Regressiva Zero</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
-                O pobre paga proporcionalmente mais imposto que o rico no Brasil.<br>
                 • Isenção total de impostos federais sobre itens da cesta básica.<br>
                 • Tributação progressiva sobre dividendos acima de R$ 500 mil/ano.<br>
                 • Fim da isenção de IR sobre lucros e dividendos.<br>
@@ -473,15 +588,13 @@
             <h4>4. Fusão de municípios inviáveis</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
                 Cidades com menos de 5 mil habitantes e menos de 10% de receita própria devem ser incorporadas a municípios vizinhos.<br>
-                • Redução de <strong>R$ 15 bilhões/ano</strong> em custo administrativo.<br>
-                <strong>Atingiria 1.200 municípios.</strong>
+                <strong>Economia: R$ 15 bilhões/ano.</strong>
             </p>
         </div>
 
         <div class="plan-card">
             <h4>5. Fim do Fundo Eleitoral e do orçamento secreto</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
-                Dinheiro público não deve financiar campanha.<br>
                 • Fim do Fundão: <strong>R$ 5,7 bilhões/ano</strong> economizados.<br>
                 • Fim das emendas de relator e impositivas sem critério técnico.<br>
                 <strong>Economia: R$ 70 bilhões/ano redirecionados para saúde e educação.</strong>
@@ -555,10 +668,10 @@
             <div class="card">
                 <div class="icon">🎯</div>
                 <h3>Incentivos, não ideologia</h3>
-                <p style="font-size:0.9rem; color:var(--text2);">O problema do Brasil não é capitalismo ou socialismo. É que as regras atuais <strong>premiam quem suga o Estado e punem quem produz</strong>. Deputado que gasta mal se reelege. Juiz que trabalha 4 dias por semana ganha supersalário. Empresário que sonega fica impune. Isso não tem ideologia — tem matemática.</p>
+                <p style="font-size:0.9rem; color:var(--text2);">O problema do Brasil não é capitalismo ou socialismo. É que as regras atuais <strong>premiam quem suga o Estado e punem quem produz</strong>. Deputado que gasta mal se reelege. Juiz que trabalha 4 dias por semana ganha supersalário. Empresário que sonega fica impune.</p>
                 <div class="detail" style="margin-top:10px;">
                     <span class="tagline">Exemplo simples</span>
-                    Se você pagar R$ 10 por cada coco que um macaco entregar, e R$ 1 por cada banana, o macaco vai trazer cocos. Políticos são iguais. Se o voto premia quem distribui emenda, eles distribuirão emendas. Mude a recompensa, mude o comportamento.
+                    Se uma máquina de café cobrar R$ 10 por um espresso e R$ 1 por um pingado, ela vai vender mais espresso porque o incentivo está lá. Políticos funcionam igual. Se o voto premia quem distribui emenda, eles distribuirão emendas. <strong>Mude a recompensa, mude o comportamento.</strong>
                 </div>
             </div>
 
@@ -598,7 +711,7 @@
         <div class="cta">
             <h3>🧠 O sistema não vai se reformar sozinho.</h3>
             <p>Enquanto você defende político como time de futebol, 594 pessoas decidem como torrar R$ 4 trilhões por ano. A única saída é parar de aplaudir bandeira e começar a cobrar resultado com base em dado. Compartilhe este mapa com alguém que ainda acredita que o problema é o "outro lado".</p>
-            <a href="#sistema" class="btn">REVISAR O MAPA ↑</a>
+            <a href="#impostos" class="btn">REVISAR O MAPA ↑</a>
         </div>
     </div>
 </section>
