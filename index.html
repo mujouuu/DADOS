@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Mapa do Sistema — Dados reais para quem quer enxergar</title>
+    <title>O Sistema Não É Inimigo. Ele É Pior: Ele É Indiferente. — Mapa Real do Poder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -55,7 +55,7 @@
             pointer-events: none;
         }
         .hero h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 900; letter-spacing: -1.5px; line-height: 1.15;
             margin-bottom: 18px;
         }
@@ -115,6 +115,13 @@
         .drain { color: #ff5252; font-weight: 700; }
         .neutral { color: #ffb300; }
 
+        .vote-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; }
+        .vote-table th, .vote-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        .vote-table th { background: var(--surface2); color: #ccc; }
+        .vote-bar { display: flex; height: 20px; border-radius: 4px; overflow: hidden; background: var(--surface2); }
+        .vote-bar .pro { background: #c62828; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; }
+        .vote-bar .contra { background: #1b5e20; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; }
+
         .plan-card {
             background: var(--surface); border: 2px solid #1a3a1a; border-radius: var(--radius);
             padding: 24px; margin-bottom: 16px;
@@ -165,6 +172,7 @@
         <div class="logo">Mapa<span>Real</span></div>
         <ul class="nav-links">
             <li><a href="#sistema">Quem Manda</a></li>
+            <li><a href="#votacoes">Votações</a></li>
             <li><a href="#estados">Regiões</a></li>
             <li><a href="#cidades">Cidades</a></li>
             <li><a href="#plano">Plano Nacional</a></li>
@@ -175,8 +183,8 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Você não vive numa democracia.<br>Você vive num <mark>condomínio fechado</mark> onde a conta é sua.</h1>
-        <p>Enquanto você briga por bandeira, 594 pessoas decidem como torrar R$ 4 trilhões por ano.</p>
+        <h1>O Sistema Não É Inimigo.<br>Ele É <mark>Indiferente</mark>.</h1>
+        <p>Enquanto você briga por bandeira, 594 pessoas decidem como torrar R$ 4 trilhões por ano. E eles nem sabem seu nome.</p>
     </div>
 </section>
 
@@ -242,8 +250,96 @@
     </div>
 </section>
 
+<!-- VOTAÇÕES INÚTEIS -->
+<section id="votacoes" style="background: var(--surface);">
+    <div class="container">
+        <span class="section-label label-orange">VOTAÇÕES QUE PIORAM SUA VIDA</span>
+        <h2>Os deputados que votam contra você — e como</h2>
+        <p class="subtitle">Não é opinião: é matemática. Veja exemplos reais de votações na Câmara onde a maioria aprovou medidas que sangram o contribuinte ou protegem privilégios.</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🗳️</div>
+                <h3>Aumento do Fundão Eleitoral (2021 e 2024)</h3>
+                <div class="number red">349 votos</div>
+                <p style="font-size:0.85rem; color:var(--text2);">Deputados que aprovaram R$ 5,7 bi para campanhas.</p>
+                <div class="detail">
+                    <span class="tagline">Quem votou a favor</span>
+                    <strong>68% da Câmara</strong> votou para aumentar o Fundão de R$ 2 bi para R$ 5,7 bi. Entre os que votaram "sim", estavam <strong>deputados de todos os espectros políticos</strong>, inclusive os que se dizem "contra gastos públicos". A justificativa oficial: "democracia custa caro".
+                </div>
+                <div class="vote-bar" style="margin-top:10px;">
+                    <div class="pro" style="width:68%;">A favor 68%</div>
+                    <div class="contra" style="width:32%;">Contra 32%</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">💼</div>
+                <h3>Reajuste de Salários do Judiciário e MP (2022)</h3>
+                <div class="number red">R$ 1,7 bi</div>
+                <p style="font-size:0.85rem; color:var(--text2);">Impacto anual do aumento aprovado.</p>
+                <div class="detail">
+                    <span class="tagline">Quem votou a favor</span>
+                    A Câmara aprovou por <strong>esmagadora maioria</strong> o reajuste de 18% para juízes e procuradores, elevando o teto para <strong>R$ 41 mil</strong>. O efeito cascata nos estados custa <strong>R$ 3 bilhões/ano</strong>. Muitos deputados que votaram "sim" depois posaram de defensores da austeridade.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏖️</div>
+                <h3>Férias de 60 dias para juízes (mantidas anualmente)</h3>
+                <div class="number red">60 dias</div>
+                <p style="font-size:0.85rem; color:var(--text2);">Férias anuais + recesso forense.</p>
+                <div class="detail">
+                    <span class="tagline">Quem impede a mudança</span>
+                    Projetos para limitar férias a 30 dias nunca avançam. A justificativa é "independência do Judiciário". Na prática, o Congresso não vota por <strong>medo de retaliação judicial</strong> e porque muitos deputados são ex-juízes ou têm parentes na magistratura.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔇</div>
+                <h3>Anistia a Dívidas de Partidos (2024)</h3>
+                <div class="number red">R$ 23 bi</div>
+                <p style="font-size:0.85rem; color:var(--text2);">Perdão de multas eleitorais e previdenciárias.</p>
+                <div class="detail">
+                    <span class="tagline">Quem votou a favor</span>
+                    Em 2024, o Congresso aprovou a <strong>anistia de R$ 23 bilhões</strong> em dívidas de partidos políticos. A votação foi <strong>simbólica</strong> (sem registro nominal) para esconder os nomes. Isso inclui perdão de multas por não usar verba de forma correta e por descumprir cotas.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚫</div>
+                <h3>Imunidade Parlamentar Ampliada</h3>
+                <div class="number red">90%</div>
+                <p style="font-size:0.85rem; color:var(--text2);">Dos inquéritos contra deputados são arquivados.</p>
+                <div class="detail">
+                    <span class="tagline">Por que isso nunca muda</span>
+                    Projetos para reduzir o foro privilegiado ou facilitar a cassação de mandato por quebra de decoro são <strong>sistematicamente engavetados</strong> pela Mesa Diretora. Deputados investigados votam para manter a própria proteção.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">📜</div>
+                <h3>Votações de "Dia do Não Sei O Quê"</h3>
+                <div class="number red">300+</div>
+                <p style="font-size:0.85rem; color:var(--text2);">Projetos de lei inúteis aprovados por ano.</p>
+                <div class="detail">
+                    <span class="tagline">Exemplos reais</span>
+                    A Câmara gasta horas votando projetos como: <strong>Dia Nacional do Brega</strong>, <strong>Dia do Tecladista</strong>, <strong>Semana da Conciliação</strong> (que já existe). Cada sessão custa <strong>R$ 200 mil</strong> aos cofres públicos. Enquanto isso, reformas estruturais esperam décadas.
+                </div>
+            </div>
+        </div>
+
+        <div class="big-alert">
+            <span class="alert-icon">📊</span>
+            <div>
+                <strong>O padrão é claro.</strong> Quando a votação é para aumentar salário, fundo eleitoral ou anistiar dívida de partido, a aprovação é <strong>rápida e com ampla maioria</strong>. Quando é para cortar privilégios, reduzir imposto ou punir corrupção, o projeto <strong>some na gaveta</strong>. Não é ideologia — é sobrevivência política.
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ESTADOS -->
-<section id="estados" style="background: var(--surface);">
+<section id="estados">
     <div class="container">
         <span class="section-label label-orange">MAL-ESTAR FEDERATIVO</span>
         <h2>Quem paga e quem recebe</h2>
@@ -268,7 +364,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">dos municípios nordestinos dependem 90%+ de repasses.</p>
                 <div class="detail">
                     <span class="tagline">O paradoxo</span>
-                    O Nordeste tem <strong>27% da população</strong>, mas recebe <strong>35% das transferências federais</strong>. Mais de <strong>800 cidades nordestinas</strong> têm o FPM (Fundo de Participação dos Municípios) como única receita relevante. Não produzem, consomem repasses. O modelo perpetua a dependência.
+                    O Nordeste tem <strong>27% da população</strong>, mas recebe <strong>35% das transferências federais</strong>. Mais de <strong>800 cidades nordestinas</strong> têm o FPM como única receita relevante. Não produzem, consomem repasses. O modelo perpetua a dependência.
                 </div>
             </div>
 
@@ -298,7 +394,7 @@
 </section>
 
 <!-- CIDADES -->
-<section id="cidades">
+<section id="cidades" style="background: var(--surface);">
     <div class="container">
         <span class="section-label label-red">CIDADES ZUMBI</span>
         <h2>Prefeituras que só existem por causa de repasse</h2>
@@ -342,7 +438,7 @@
 </section>
 
 <!-- PLANO NACIONAL -->
-<section id="plano" style="background: var(--surface);">
+<section id="plano">
     <div class="container">
         <span class="section-label label-green">PLANO DE LONGO PRAZO</span>
         <h2>O que funcionaria de fato (com base nos dados)</h2>
@@ -352,7 +448,7 @@
             <h4>1. Reforma Administrativa com corte na casta</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
                 O Brasil gasta <strong>13% do PIB com funcionalismo público</strong> (média da OCDE: 9%). É preciso:<br>
-                • Fim de supersalários: teto constitucional de <strong>R$ 41 mil</strong> (salário de ministro do STF) para todos os poderes, sem penduricalhos.<br>
+                • Fim de supersalários: teto constitucional de <strong>R$ 41 mil</strong> para todos os poderes, sem penduricalhos.<br>
                 • Avaliação de desempenho com demissão por ineficiência comprovada.<br>
                 • Fim de férias de 60 dias para juízes e promotores.<br>
                 • Redução de 30% no número de cargos comissionados em 5 anos.<br>
@@ -405,7 +501,7 @@
 </section>
 
 <!-- REGRAS -->
-<section id="regras">
+<section id="regras" style="background: var(--surface);">
     <div class="container">
         <span class="section-label label-red">REGRAS RÍGIDAS</span>
         <h2>Trava constitucional para políticos</h2>
@@ -417,7 +513,7 @@
                 <h3>Mandato de 8 anos, sem reeleição</h3>
                 <div class="detail" style="margin-top: 10px;">
                     <span class="tagline">Por quê</span>
-                    Político em campanha permanente governa para a próxima eleição, não para o país. Mandato único de <strong>8 anos para presidente, governador e prefeito</strong>, sem possibilidade de reeleição. Foco total em entregar resultado.
+                    Político em campanha permanente governa para a próxima eleição, não para o país. Mandato único de <strong>8 anos para presidente, governador e prefeito</strong>, sem possibilidade de reeleição.
                 </div>
             </div>
 
@@ -426,7 +522,7 @@
                 <h3>Meta fiscal com cadeia</h3>
                 <div class="detail" style="margin-top: 10px;">
                     <span class="tagline">Por quê</span>
-                    Estourar meta fiscal sem calamidade comprovada vira <strong>crime de responsabilidade</strong>. Presidente, governador e prefeito que gastarem mais do que arrecadam (exceto guerra/pandemia) perdem o mandato e ficam inelegíveis por 15 anos.
+                    Estourar meta fiscal sem calamidade comprovada vira <strong>crime de responsabilidade</strong>. Perda de mandato e inelegibilidade por 15 anos.
                 </div>
             </div>
 
@@ -435,7 +531,7 @@
                 <h3>Ficha limpa automática</h3>
                 <div class="detail" style="margin-top: 10px;">
                     <span class="tagline">Por quê</span>
-                    <strong>Condenação em segunda instância = inelegibilidade imediata</strong>, sem recurso ao STF para manter candidatura. Quem responde a processo por corrupção, lavagem ou peculato não pode assumir cargo público até trânsito em julgado.
+                    <strong>Condenação em segunda instância = inelegibilidade imediata</strong>. Sem recurso ao STF para manter candidatura.
                 </div>
             </div>
 
@@ -444,7 +540,7 @@
                 <h3>Voto distrital puro</h3>
                 <div class="detail" style="margin-top: 10px;">
                     <span class="tagline">Por quê</span>
-                    Fim do voto proporcional. Cada região elege <strong>um deputado</strong>. O eleitor sabe quem é seu representante e cobra diretamente. Acaba o "deputado eleito com voto de legenda" que ninguém conhece.
+                    Fim do voto proporcional. Cada região elege <strong>um deputado</strong>. O eleitor sabe quem cobrar. Acaba o deputado eleito com voto de legenda que ninguém conhece.
                 </div>
             </div>
         </div>
@@ -464,7 +560,7 @@
 
 <footer>
     <div class="container">
-        <p>Fontes: IBGE, Tesouro Nacional, TCU, Transparência Brasil, Impostômetro (ACSP), Firjan, CLP.</p>
+        <p>Fontes: IBGE, Tesouro Nacional, TCU, Transparência Brasil, Impostômetro (ACSP), Firjan, CLP, Câmara dos Deputados (dados de votações).</p>
         <p>Nenhum partido, político ou empresa financia esta página.</p>
     </div>
 </footer>
