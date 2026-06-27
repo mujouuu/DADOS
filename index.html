@@ -3,537 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brasil Além da Polarização — Dados que Libertam</title>
+    <title>Fatos Nacionais — Dados reais, sem time político</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #060608;
-            --surface: #111116;
-            --surface-2: #1a1a22;
-            --text: #e8e8f0;
-            --text-secondary: #9999aa;
-            --accent: #ff3b3b;
-            --accent-glow: #ff5555;
-            --blue: #3b82f6;
-            --green: #10b981;
-            --yellow: #f59e0b;
-            --border: #222230;
-            --radius: 14px;
-            --shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
+            --bg: #050508;
+            --surface: #0f0f15;
+            --surface2: #18181f;
+            --text: #e4e4ec;
+            --text2: #9d9dac;
+            --red: #e53935;
+            --red-glow: #ff5252;
+            --green: #00c853;
+            --yellow: #ffb300;
+            --border: #22222c;
+            --radius: 16px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
         }
+        .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-
-        /* Nav */
+        /* Navegação */
         nav {
-            position: fixed; top: 0; left: 0; right: 0;
-            background: rgba(6,6,8,0.9); backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border); z-index: 100; padding: 14px 0;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(5,5,8,0.88); backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border); padding: 14px 0;
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo {
-            font-weight: 800; font-size: 1.3rem; color: #fff; letter-spacing: -0.5px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .logo .icon { font-size: 1.4rem; }
-        .nav-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
-        .nav-links a {
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
-        }
+        .logo { font-weight: 800; font-size: 1.2rem; color: #fff; letter-spacing: -0.3px; }
+        .logo span { color: var(--red-glow); }
+        .nav-links { display: flex; gap: 18px; list-style: none; }
+        .nav-links a { color: var(--text2); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
         .nav-links a:hover { color: #fff; }
-
-        /* Sections */
-        section { padding: 80px 0; }
-        .section-header {
-            margin-bottom: 50px;
-        }
-        .section-header .tag {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
-        }
-        .tag-red { background: rgba(255,59,59,0.15); color: #ff6b6b; }
-        .tag-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
-        .tag-yellow { background: rgba(245,158,11,0.15); color: #fbbf24; }
-        .section-header h2 {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
-            font-weight: 900; letter-spacing: -1.5px; line-height: 1.2;
-            margin-bottom: 12px;
-        }
-        .section-header p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; }
 
         /* Hero */
         .hero {
-            padding: 140px 0 80px;
-            text-align: center;
-            position: relative;
+            padding: 150px 0 80px; text-align: center; position: relative;
         }
         .hero::before {
             content: '';
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%,-50%);
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(255,60,60,0.1) 0%, transparent 70%);
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+            width: 450px; height: 450px;
+            background: radial-gradient(circle, rgba(229,57,53,0.12) 0%, transparent 70%);
             pointer-events: none;
         }
         .hero h1 {
-            font-size: clamp(2.2rem, 7vw, 4.5rem);
-            font-weight: 900; line-height: 1.1; letter-spacing: -2px;
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            font-weight: 900; letter-spacing: -1.5px; line-height: 1.15;
             margin-bottom: 20px;
         }
-        .hero .highlight {
-            background: linear-gradient(135deg, #ff5555, #ff8888);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero h1 mark {
+            background: none; color: var(--red-glow);
         }
         .hero p {
-            font-size: 1.2rem; color: var(--text-secondary);
-            max-width: 650px; margin: 0 auto 30px;
+            color: var(--text2); font-size: 1.15rem; max-width: 600px;
+            margin: 0 auto 28px;
         }
+
+        /* Seções */
+        section { padding: 70px 0; }
+        .section-label {
+            display: inline-block; padding: 6px 14px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.4px;
+            margin-bottom: 12px;
+        }
+        .label-red { background: rgba(229,57,53,0.15); color: #ff6b6b; }
+        .label-yellow { background: rgba(255,179,0,0.15); color: #ffc107; }
+        .label-green { background: rgba(0,200,83,0.15); color: #00e676; }
+        h2 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800; letter-spacing: -1px; margin-bottom: 10px;
+        }
+        .subtitle { color: var(--text2); margin-bottom: 40px; font-size: 1rem; }
 
         /* Cards */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
         .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px;
             transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
         }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            border-color: #333;
-        }
-        .card .card-icon { font-size: 2rem; margin-bottom: 12px; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(0,0,0,0.4); border-color: #333; }
+        .card .icon { font-size: 2rem; margin-bottom: 12px; }
         .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-        .card .big-number {
-            font-size: 3rem; font-weight: 900; letter-spacing: -2px;
+        .card .number {
+            font-size: 2.8rem; font-weight: 900; letter-spacing: -1.5px;
             margin: 10px 0;
         }
-        .big-number.red { color: #ff5555; }
-        .big-number.green { color: #10b981; }
-        .big-number.yellow { color: #fbbf24; }
-        .card .example-box {
-            background: var(--surface-2);
-            border-radius: 10px;
-            padding: 14px;
-            margin-top: 14px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            border-left: 3px solid #333;
+        .number.red { color: #ff5252; }
+        .number.green { color: #00c853; }
+        .number.yellow { color: #ffb300; }
+        .card .detail {
+            background: var(--surface2); border-radius: 10px;
+            padding: 12px; margin-top: 12px; font-size: 0.88rem;
+            color: var(--text2); border-left: 3px solid #333;
         }
-        .example-box strong { color: #fff; }
-        .example-box .label {
+        .detail strong { color: #fff; }
+        .detail .tagline {
             font-size: 0.7rem; text-transform: uppercase;
-            font-weight: 700; color: #888; letter-spacing: 1px;
-            margin-bottom: 6px; display: block;
+            font-weight: 700; color: #777; letter-spacing: 0.8px;
+            display: block; margin-bottom: 6px;
         }
 
-        /* Compare Table */
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.9rem;
-        }
-        .compare-table th {
-            text-align: left;
-            padding: 12px 16px;
-            background: var(--surface-2);
-            font-weight: 600;
-            color: #ccc;
-        }
-        .compare-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
-        .compare-table .win { color: #10b981; font-weight: 700; }
-        .compare-table .lose { color: #ff5555; font-weight: 700; }
-
-        /* Barra Simples */
-        .simple-bar {
-            display: flex; align-items: center; gap: 10px; margin: 8px 0;
-        }
-        .simple-bar .bar-label { min-width: 80px; font-size: 0.8rem; color: var(--text-secondary); }
-        .simple-bar .bar-track {
-            flex: 1; height: 24px; background: var(--surface-2);
+        /* Barra */
+        .bar-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+        .bar-row .label { min-width: 70px; font-size: 0.78rem; color: var(--text2); }
+        .bar-row .track {
+            flex: 1; height: 22px; background: var(--surface2);
             border-radius: 6px; overflow: hidden;
         }
-        .simple-bar .bar-fill {
+        .bar-row .fill {
             height: 100%; border-radius: 6px;
             display: flex; align-items: center; justify-content: flex-end;
-            padding-right: 8px; font-size: 0.75rem; font-weight: 700; color: #fff;
+            padding-right: 8px; font-size: 0.72rem; font-weight: 700; color: #fff;
         }
-        .bar-red { background: linear-gradient(90deg, #b80000, #ff4444); }
-        .bar-blue { background: linear-gradient(90deg, #2563eb, #60a5fa); }
-        .bar-green { background: linear-gradient(90deg, #059669, #34d399); }
+        .fill-red { background: linear-gradient(90deg, #b71c1c, #e53935); }
+        .fill-blue { background: linear-gradient(90deg, #1565c0, #42a5f5); }
+        .fill-green { background: linear-gradient(90deg, #00695c, #00c853); }
 
-        /* Steps */
-        .step-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            margin-bottom: 20px;
+        /* Etapas */
+        .step {
+            display: flex; gap: 20px; align-items: flex-start;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px; margin-bottom: 16px;
         }
-        .step-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--accent-glow);
-            line-height: 1;
-            min-width: 50px;
+        .step-num {
+            font-size: 2.4rem; font-weight: 900; color: var(--red-glow);
+            line-height: 1; min-width: 44px;
         }
-        .step-content h4 { font-weight: 700; margin-bottom: 6px; }
-        .step-content p { color: var(--text-secondary); font-size: 0.95rem; }
+        .step-text h4 { font-weight: 700; margin-bottom: 6px; }
+        .step-text p { color: var(--text2); font-size: 0.95rem; }
 
         /* CTA */
-        .cta-block {
-            background: linear-gradient(135deg, #1a0000, #0a0a10);
-            border: 1px solid #333;
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            margin: 20px 0;
+        .cta {
+            background: linear-gradient(135deg, #120000, #08080c);
+            border: 1px solid #2a2a2a; border-radius: var(--radius);
+            padding: 36px 28px; text-align: center; margin: 20px 0;
         }
-        .cta-block h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
-        .cta-block p { color: var(--text-secondary); max-width: 550px; margin: 0 auto 24px; }
+        .cta h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 10px; }
+        .cta p { color: var(--text2); margin-bottom: 20px; }
         .btn {
-            display: inline-block; padding: 12px 28px;
-            border-radius: 10px; font-weight: 700; font-size: 0.95rem;
-            text-decoration: none; transition: all 0.2s;
-            border: none; cursor: pointer;
+            display: inline-block; padding: 12px 28px; border-radius: 10px;
+            font-weight: 700; text-decoration: none; color: #fff;
+            background: #c62828; transition: background 0.2s;
         }
-        .btn-red { background: #cc0000; color: #fff; }
-        .btn-red:hover { background: #ff1a1a; box-shadow: 0 0 20px rgba(255,80,80,0.3); }
+        .btn:hover { background: #e53935; }
 
         footer {
-            text-align: center; padding: 40px 0;
-            color: #555; font-size: 0.85rem;
-            border-top: 1px solid var(--border); margin-top: 60px;
+            text-align: center; padding: 36px 0; color: #555;
+            font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px;
         }
 
-        @media (max-width: 640px) {
-            .nav-links { gap: 12px; font-size: 0.8rem; }
-            .hero { padding-top: 160px; }
-            .step-card { flex-direction: column; }
+        @media (max-width: 600px) {
+            .step { flex-direction: column; }
+            .nav-links { gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="container">
-            <div class="logo"><span class="icon">📊</span> Dados & Fatos</div>
-            <ul class="nav-links">
-                <li><a href="#realidade">Realidade</a></li>
-                <li><a href="#mentalidade">Mentalidade</a></li>
-                <li><a href="#comparacao">Comparação</a></li>
-                <li><a href="#escapar">Escapar</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav>
+    <div class="container">
+        <div class="logo">Fatos<span>Nacionais</span></div>
+        <ul class="nav-links">
+            <li><a href="#dados">Dados</a></li>
+            <li><a href="#mente">Mente</a></li>
+            <li><a href="#acao">Agir</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container">
-            <h1>O Brasil não está <span class="highlight">dividido</span>.<br>Está manipulado.</h1>
-            <p>Enquanto você discute no grupo da família, os números contam uma história diferente. Aqui, só entram dados oficiais. Sem partido. Sem ídolo.</p>
-        </div>
-    </section>
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>Enquanto você escolhe <mark>um lado</mark>,<br>o sistema escolhe o seu bolso.</h1>
+        <p>Dados oficiais, explicações diretas e um convite para pensar com a própria cabeça.</p>
+    </div>
+</section>
 
-    <!-- REALIDADE -->
-    <section id="realidade">
-        <div class="container">
-            <div class="section-header">
-                <span class="tag tag-red">EVIDÊNCIAS</span>
-                <h2>O que os números mostram (e ninguém conta)</h2>
-                <p>Dados do IBGE, Tesouro Nacional e Receita Federal. Simples, diretos e sem narrativa.</p>
+<!-- Dados -->
+<section id="dados">
+    <div class="container">
+        <span class="section-label label-red">EVIDÊNCIAS</span>
+        <h2>O que está acontecendo de fato</h2>
+        <p class="subtitle">Números que afetam sua vida, sem filtro ideológico.</p>
+
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="icon">💰</div>
+                <h3>Carga tributária recorde</h3>
+                <div class="number red">33,2%</div>
+                <p style="font-size:0.9rem; color:var(--text2);">do PIB em 2024. Maior valor desde 1991.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    A cada <strong>R$ 100</strong> que o Brasil produz, <strong>R$ 33,20</strong> ficam com o governo. Você trabalha <strong>4 meses por ano</strong> só para pagar imposto embutido em salário, consumo, conta de luz e gasolina.
+                </div>
             </div>
 
-            <div class="grid-2">
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-icon">💰</div>
-                    <h3>O governo pega 33 de cada 100 reais que você produz</h3>
-                    <div class="big-number red">33,2%</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Carga tributária em 2024. Recorde histórico desde 1991.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Se você ganha <strong>R$ 3.000</strong>, o governo fica com <strong>R$ 996</strong> só em tributos diretos e indiretos embutidos em tudo que você compra. Trabalha 4 meses do ano só para pagar imposto.
-                    </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="icon">🛒</div>
+                <h3>Comida sobe, salário não acompanha</h3>
+                <div class="number red">+18%</div>
+                <p style="font-size:0.9rem; color:var(--text2);">inflação de alimentos em casa (jan/23 a fev/25).</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    O <strong>café</strong> foi de R$ 15 para R$ 24. A <strong>laranja</strong> dobrou. Seu salário não subiu 18% nesse período. Ou seja, você está <strong>mais pobre</strong> fazendo as mesmas compras de antes.
                 </div>
+            </div>
 
-                <!-- Card 2 -->
-                <div class="card">
-                    <div class="card-icon">🛒</div>
-                    <h3>Sua comida subiu muito mais que seu salário</h3>
-                    <div class="big-number red">+18%</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Inflação de alimentos em casa (jan/2023 a fev/2025).</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        O café que você comprava por <strong>R$ 15</strong> hoje custa <strong>R$ 24</strong>. A laranja dobrou de preço. Seu salário subiu isso? Não. Você está mais pobre comendo o básico.
-                    </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="icon">📄</div>
+                <h3>Imposto de Renda que corrói</h3>
+                <div class="number red">8 anos</div>
+                <p style="font-size:0.9rem; color:var(--text2);">com a tabela congelada para a classe média.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    Quem ganhava <strong>R$ 3.000</strong> em 2015 pagava <strong>R$ 62</strong> de IR. Hoje paga <strong>R$ 220</strong>, mesmo sem aumento real. A inflação corrói seu poder de compra, mas a Receita trata você como se tivesse enriquecido.
                 </div>
+            </div>
 
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-icon">📄</div>
-                    <h3>Você paga mais Imposto de Renda sem ganhar mais</h3>
-                    <div class="big-number red">8 anos</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Tabela do IR congelada de 2015 a 2023 para a classe média.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Em 2015, quem ganhava <strong>R$ 3.000</strong> pagava <strong>R$ 62</strong> de IR. Hoje, com o mesmo poder de compra, paga <strong>R$ 220</strong>. A inflação corroeu seu salário, mas a Receita finge que você ficou rico.
-                    </div>
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="icon">📦</div>
+                <h3>Taxaram sua compra online</h3>
+                <div class="number red">44%</div>
+                <p style="font-size:0.9rem; color:var(--text2);">de imposto sobre produtos de até US$ 50.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    Uma roupa de <strong>R$ 50</strong> na internet agora chega com <strong>R$ 22</strong> de tributo. Antes, compras pequenas eram isentas. O imposto foi criado em 2024. Quem mais sente é a dona de casa e o jovem sem grana.
                 </div>
+            </div>
 
-                <!-- Card 4 -->
-                <div class="card">
-                    <div class="card-icon">📦</div>
-                    <h3>Até sua comprinha online agora é taxada</h3>
-                    <div class="big-number red">44%</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Alíquota efetiva sobre compras internacionais de até US$ 50.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Uma bugiganga de <strong>R$ 50</strong> na internet agora chega com <strong>R$ 22</strong> de imposto. Antes, era isento. O governo criou esse imposto novo em 2024. Quem mais compra? A dona de casa, o jovem, o pobre.
-                    </div>
+            <!-- Card 5 -->
+            <div class="card">
+                <div class="icon">🍽️</div>
+                <h3>Menos fome (sim, é verdade)</h3>
+                <div class="number green">-24 mi</div>
+                <p style="font-size:0.9rem; color:var(--text2);">de pessoas saíram da fome entre 2021 e 2023.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    Em 2021, <strong>33 milhões</strong> de brasileiros passavam fome severa. Em 2023, o número caiu para <strong>8,7 milhões</strong>. O Bolsa Família turbinado e o emprego ajudaram. Isso é fato, não torcida.
                 </div>
+            </div>
 
-                <!-- Card 5 -->
-                <div class="card">
-                    <div class="card-icon">🍽️</div>
-                    <h3>Tem menos gente passando fome (sim, isso é verdade)</h3>
-                    <div class="big-number green">-24 mi</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Brasileiros que saíram da insegurança alimentar grave em 2023.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Em 2021, <strong>33 milhões</strong> passavam fome. Em 2023, caiu para <strong>8,7 milhões</strong>. O Bolsa Família turbinado e o emprego aquecido tiraram gente da miséria. Isso é fato, independente de quem governa.
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="card">
-                    <div class="card-icon">👷</div>
-                    <h3>O desemprego está baixo, mas...</h3>
-                    <div class="big-number green">6,5%</div>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Menor taxa em décadas (jan/2025).</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Tem mais gente trabalhando, sim. Mas os salários médios não cresceram no mesmo ritmo da inflação. Você está empregado, mas seu dinheiro compra menos coisas que há 3 anos.
-                    </div>
+            <!-- Card 6 -->
+            <div class="card">
+                <div class="icon">👷</div>
+                <h3>Desemprego no menor nível</h3>
+                <div class="number green">6,5%</div>
+                <p style="font-size:0.9rem; color:var(--text2);">menor taxa em décadas (jan/2025).</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    Mais gente trabalhando. Mas o <strong>salário médio</strong> não subiu o suficiente para cobrir a inflação. Você está empregado, mas o dinheiro compra <strong>menos coisas</strong> do que comprava há 3 anos.
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- MENTALIDADE -->
-    <section id="mentalidade" style="background: var(--surface);">
-        <div class="container">
-            <div class="section-header">
-                <span class="tag tag-yellow">PSICOLOGIA</span>
-                <h2>Por que você defende político como time de futebol?</h2>
-                <p>Seu cérebro está sendo hackeado. Veja como.</p>
+<!-- Mente -->
+<section id="mente" style="background: var(--surface);">
+    <div class="container">
+        <span class="section-label label-yellow">PSICOLOGIA</span>
+        <h2>Como seu cérebro é capturado</h2>
+        <p class="subtitle">Você não é burro. Está sendo manipulado. A diferença é importante.</p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🔄</div>
+                <h3>Você só vê o que já acredita</h3>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Chama-se viés de confirmação. O algoritmo te mostra mais daquilo que você clica.</p>
+                <div class="detail">
+                    <span class="tagline">Exemplo</span>
+                    Se você acredita que o país quebrou, seu feed só mostra crise. Se acredita que está tudo bem, só vê progresso. <strong>Nenhum dos dois lados vê o quadro completo.</strong>
+                </div>
             </div>
 
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-icon">🔄</div>
-                    <h3>Viés de Confirmação</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Você só clica, lê e assiste ao que confirma o que já acredita. O algoritmo percebe e te alimenta mais do mesmo.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Se você acha que "Lula afundou o país", seu feed só mostra notícia ruim sobre ele. Se acha que "Bolsonaro era genocida", só aparece erro dele. Nos dois casos, você vive numa realidade pela metade.
-                    </div>
+            <div class="card">
+                <div class="icon">😡</div>
+                <h3>Raiva vende mais que informação</h3>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Post indignado gera mais clique, mais compartilhamento, mais anúncio.</p>
+                <div class="detail">
+                    <span class="tagline">Exemplo</span>
+                    "Governo anuncia nova regra fiscal" → 500 leituras.<br>
+                    "Governo quer enfiar a mão no seu bolso" → 500 mil leituras.<br>
+                    <strong>Você é o produto.</strong> A indignação é o combustível.
                 </div>
-                <div class="card">
-                    <div class="card-icon">😡</div>
-                    <h3>A Raiva Dá Lucro</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Post indignado gera mais curtida, compartilhamento e visualização. Mídia e políticos vivem de te irritar.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Uma manchete "Governo anuncia medida" tem 100 cliques. "Governo destrói seu bolso com nova medida" tem 100.000. Adivinha qual título eles vão usar? Você é o produto, não o cliente.
-                    </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎭</div>
+                <h3>Os dois lados precisam do conflito</h3>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Sem um "inimigo", o discurso político desaba.</p>
+                <div class="detail">
+                    <span class="tagline">Exemplo</span>
+                    É um teatro: um sobe no palco e diz "o outro vai destruir o país". A plateia briga. Enquanto isso, <strong>ambos governaram com o mesmo Centrão</strong> e mantiveram a estrutura que suga 33% do PIB.
                 </div>
-                <div class="card">
-                    <div class="card-icon">🎭</div>
-                    <h3>O Jogo das Tesouras</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Lula e Bolsonaro precisam um do outro. Sem um "inimigo", o discurso deles desmorona.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        É um teatro: um sobe no palco e grita "o outro vai destruir o Brasil!". A plateia briga entre si enquanto o ingresso (imposto) fica mais caro. Os dois lados governaram com o mesmo Centrão e furaram teto de gastos.
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎯</div>
-                    <h3>O Inimigo Real</h3>
-                    <p style="color:var(--text-secondary); font-size:0.9rem;">Não é o petista. Não é o bolsonarista. É um sistema que suga 33% do PIB e entrega serviço público medíocre.</p>
-                    <div class="example-box">
-                        <span class="label">Exemplo prático</span>
-                        Você paga a 2ª maior taxa de juros do mundo, imposto sobre imposto, e ainda enfrenta fila no SUS, estrada esburacada e escola caindo aos pedaços. O problema não é o "outro eleitor". É o sistema que os políticos protegem.
-                    </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>O alvo real está escondido</h3>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Não é o eleitor do outro lado. É o sistema que os dois protegem.</p>
+                <div class="detail">
+                    <span class="tagline">Exemplo</span>
+                    Você paga a 2ª maior taxa de juros do mundo, imposto sobre imposto, e ainda pega fila no SUS e estrada esburacada. <strong>O problema não é a camisa vermelha ou verde-amarela.</strong> É o sistema que cobra caro e entrega pouco.
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- COMPARAÇÃO DIRETA -->
-    <section id="comparacao">
-        <div class="container">
-            <div class="section-header">
-                <span class="tag tag-blue">COMPARAÇÃO</span>
-                <h2>Lula vs Bolsonaro nos números (sem clubismo)</h2>
-                <p>Compare o que cada governo entregou nos indicadores que afetam sua vida.</p>
-            </div>
+<!-- Ação -->
+<section id="acao">
+    <div class="container">
+        <span class="section-label label-green">PRAGMATISMO</span>
+        <h2>O que fazer a partir de agora</h2>
+        <p class="subtitle">Nada de guru, nada de autoajuda. Passos concretos.</p>
 
-            <div style="overflow-x: auto;">
-                <table class="compare-table">
-                    <thead>
-                        <tr>
-                            <th>Indicador</th>
-                            <th>Governo Bolsonaro (final de 2022)</th>
-                            <th>Governo Lula 3 (dado mais recente)</th>
-                            <th>Quem foi melhor?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Extrema Pobreza</strong></td>
-                            <td>5,9%</td>
-                            <td class="win">4,4% (recorde)</td>
-                            <td>Lula 3</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Desemprego</strong></td>
-                            <td>7,9%</td>
-                            <td class="win">6,5% (recorde)</td>
-                            <td>Lula 3</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Fome (insegurança grave)</strong></td>
-                            <td class="lose">33 milhões (2021)</td>
-                            <td class="win">8,7 milhões (2023)</td>
-                            <td>Lula 3</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Carga Tributária</strong></td>
-                            <td>32,9% do PIB</td>
-                            <td class="lose">33,2% do PIB (recorde)</td>
-                            <td>Bolsonaro (era menor)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Inflação de Alimentos</strong></td>
-                            <td class="lose">+13,4% (acum. 2022)</td>
-                            <td class="lose">+7,7% (só em 2024)</td>
-                            <td>Ambos ruins</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Correção Tabela IR</strong></td>
-                            <td class="lose">Zero correção por 4 anos</td>
-                            <td>Corrigiu só para quem ganha até 2 SM</td>
-                            <td>Ambos ruins</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Renda Média</strong></td>
-                            <td>R$ 1.586</td>
-                            <td class="win">R$ 1.848</td>
-                            <td>Lula 3</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="cta-block">
-                <h3>🔍 Percebeu o padrão?</h3>
-                <p>Nenhum dos dois é 100% herói ou vilão. Um entrega mais no social e cobra mais imposto. O outro conteve tributos mas explodiu a fome. <strong>A verdade não cabe em bandeira.</strong></p>
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+                <h4>Reduza o lixo digital</h4>
+                <p>20 minutos por dia de rede social. Desative notícia no celular. Se algo for realmente importante, você saberá sem precisar rolar tela 3 horas.</p>
             </div>
         </div>
-    </section>
 
-    <!-- ESCAPAR -->
-    <section id="escapar" style="background: var(--surface);">
-        <div class="container">
-            <div class="section-header">
-                <span class="tag tag-green">AÇÃO</span>
-                <h2>5 passos para sair da manada</h2>
-                <p>Simples, prático e sem guru.</p>
-            </div>
-
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Corte o açúcar digital</h4>
-                    <p>Reduza redes sociais para 20 minutos por dia. Desative notificações de portais de notícia. Se a informação for vital, ela chega até você. O resto é lixo feito para te viciar.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>Siga dados, não ídolos</h4>
-                    <p>Antes de repetir uma frase de político, cheque o IBGE, o IPCA, o Caged. Números não têm partido. Se um dado contraria seu ídolo, o problema não é o dado — é seu ídolo.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>Converse sobre o concreto</h4>
-                    <p>Não fale de Lula ou Bolsonaro com seu vizinho. Fale do preço da cesta básica, do aluguel, da gasolina. O que dói no bolso une. O que dói na bandeira divide.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h4>Político não é time de futebol</h4>
-                    <p>Nenhum político vai pagar suas contas. Nenhum vai ao seu enterro. Trate-os como prestadores de serviço: cobre resultado, troque se for ruim, não vista a camisa.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h4>Prepare-se para o pior</h4>
-                    <p>Tenha uma reserva financeira (mesmo pequena), aprenda algo útil (cozinhar, plantar, consertar), crie laços na sua comunidade. Independência pessoal é a única ideologia que funciona no colapso.</p>
-                </div>
-            </div>
-
-            <div class="cta-block">
-                <h3>🧠 A verdade não precisa de você. Você precisa dela.</h3>
-                <p>Compartilhe este site com alguém que está preso na bolha — de qualquer lado. A liberdade começa quando você para de ser marionete.</p>
-                <a href="#realidade" class="btn btn-red">VER OS DADOS NOVAMENTE ↑</a>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+                <h4>Troque ídolo por número</h4>
+                <p>Antes de repetir frase de político, cheque IBGE, IPCA, Receita Federal. Dado não tem partido. Se o número contradiz seu político favorito, largue o político, não o número.</p>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>Site independente e apartidário. Fontes: IBGE, Tesouro Nacional, Receita Federal, PNAD Contínua, Rede PENSSAN.</p>
-            <p style="margin-top:6px;">Nenhum partido, político ou empresa financia esta página.</p>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+                <h4>Fale do que dói no bolso, não na bandeira</h4>
+                <p>Com vizinho, parente, colega: fale do preço do arroz, do aluguel, da gasolina. Isso une. Brigar por sigla só serve aos que estão no poder.</p>
+            </div>
         </div>
-    </footer>
+
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text">
+                <h4>Político é prestador de serviço</h4>
+                <p>Nenhum político vai pagar sua fatura. Trate-os como encanador: resolveu? Mantém. Não resolveu? Troca. Vestir camisa de político é o maior erro tático que um cidadão pode cometer.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-text">
+                <h4>Tenha um plano B pessoal</h4>
+                <p>Reserva financeira (mesmo pequena), aprender algo útil (cozinhar, plantar, consertar), criar laços na vizinhança. Quem depende 100% do sistema é a primeira vítima quando ele falha.</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>🧠 Nenhum político vai te salvar.</h3>
+            <p>Compartilhe isso com alguém que está preso na bolha — de qualquer lado. Sair da manada é um ato de inteligência, não de rebeldia.</p>
+            <a href="#dados" class="btn">REVISAR OS DADOS ↑</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Fontes oficiais: IBGE, Tesouro Nacional, Receita Federal, PNAD Contínua.</p>
+        <p>Este site não recebe um centavo de partido, político ou empresa.</p>
+    </div>
+</footer>
 
 </body>
 </html>
