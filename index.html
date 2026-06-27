@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Sistema Não É Inimigo. Ele É Pior: Ele É Indiferente. — Mapa Real do Poder</title>
+    <title>Mapa Real do Poder — O Sistema É Indiferente</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Share+Tech+Mono&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #030305;
-            --surface: #0b0b12;
-            --surface2: #14141f;
-            --text: #e0e0ec;
-            --text2: #8c8ca0;
-            --red: #e53935;
-            --red-glow: #ff5252;
-            --orange: #ff6d00;
-            --green: #00c853;
-            --blue: #3b82f6;
+            --bg: #04040a;
+            --surface: #0d0d18;
+            --surface2: #15152a;
+            --text: #f0f0fa;
+            --text2: #a0a0c0;
+            --red: #ff3b3b;
+            --red-glow: #ff5c5c;
+            --orange: #ff7b2c;
+            --green: #00e676;
+            --blue: #448aff;
             --gold: #ffb300;
-            --border: #1e1e2e;
-            --radius: 12px;
+            --border: #1e1e3a;
+            --radius: 14px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -38,152 +39,256 @@
             color: var(--text);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            background-image:
+                radial-gradient(ellipse at 20% 20%, rgba(255, 59, 59, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 60%, rgba(255, 179, 0, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 80%, rgba(68, 138, 255, 0.03) 0%, transparent 60%);
+            background-attachment: fixed;
         }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: rgba(4, 4, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #fff;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo .pulse {
+            width: 10px;
+            height: 10px;
+            background: var(--red-glow);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 92, 92, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 0 16px rgba(255, 92, 92, 0);
+            }
+        }
+        .logo span {
+            color: var(--red-glow);
+        }
+
+        /* Navegação por Abas */
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 10px;
+        }
+        .tab-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-btn:hover {
+            border-color: #555;
+            color: #fff;
+            background: var(--surface2);
+            transform: translateY(-1px);
+        }
+        .tab-btn.active {
+            background: var(--red);
+            color: #fff;
+            border-color: var(--red);
+            box-shadow: 0 4px 20px rgba(255, 59, 59, 0.3);
+            animation: tabGlow 2s ease-in-out infinite;
+        }
+        @keyframes tabGlow {
+            0%,
+            100% {
+                box-shadow: 0 4px 20px rgba(255, 59, 59, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(255, 59, 59, 0.55);
+            }
+        }
+
+        /* Conteúdo */
+        .tab-content {
+            display: none;
+            animation: fadeSlideIn 0.45s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(3, 3, 5, 0.9);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            padding: 10px 0;
-        }
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .logo {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #fff;
-            letter-spacing: -0.3px;
-        }
-        .logo span {
-            color: var(--red-glow);
-        }
-        .nav-links {
-            display: flex;
-            gap: 12px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            color: var(--text2);
-            text-decoration: none;
-            font-size: 0.78rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #fff;
-        }
-        .lang-switch {
-            display: flex;
-            gap: 6px;
-            margin-left: 10px;
-        }
-        .lang-switch button {
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            color: var(--text2);
-            padding: 4px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .lang-switch button.active {
-            background: var(--red);
-            color: #fff;
-            border-color: var(--red);
-        }
-        .lang-switch button:hover {
-            border-color: #555;
-        }
-
+        /* Hero */
         .hero {
-            padding: 160px 0 70px;
+            padding: 80px 0 50px;
             text-align: center;
             position: relative;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(229, 57, 53, 0.18) 0%, transparent 70%);
-            pointer-events: none;
-        }
         .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 900;
             letter-spacing: -1.5px;
             line-height: 1.15;
             margin-bottom: 18px;
         }
         .hero h1 mark {
-            background: none;
-            color: var(--red-glow);
+            background: linear-gradient(135deg, #ff3b3b, #ff8a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 2.5s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.4);
+            }
         }
         .hero p {
             color: var(--text2);
-            font-size: 1.1rem;
-            max-width: 620px;
+            font-size: 1.15rem;
+            max-width: 600px;
             margin: 0 auto 24px;
         }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .hero-stat {
+            text-align: center;
+            animation: float 4s ease-in-out infinite;
+        }
+        .hero-stat:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+        .hero-stat:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .hero-stat .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff3b3b, #ff8a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-stat .stat-label {
+            font-size: 0.8rem;
+            color: var(--text2);
+        }
 
+        /* Seções */
         section {
-            padding: 60px 0;
+            padding: 50px 0;
         }
         .section-label {
             display: inline-block;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.5px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            animation: fadeSlideIn 0.5s ease;
         }
         .label-red {
-            background: rgba(229, 57, 53, 0.15);
+            background: rgba(255, 59, 59, 0.15);
             color: #ff6b6b;
+            border: 1px solid rgba(255, 59, 59, 0.25);
         }
         .label-orange {
-            background: rgba(255, 109, 0, 0.15);
-            color: #ff9100;
+            background: rgba(255, 123, 44, 0.15);
+            color: #ff9f5c;
+            border: 1px solid rgba(255, 123, 44, 0.25);
         }
         .label-green {
-            background: rgba(0, 200, 83, 0.15);
+            background: rgba(0, 230, 118, 0.15);
             color: #00e676;
+            border: 1px solid rgba(0, 230, 118, 0.25);
         }
         .label-blue {
-            background: rgba(59, 130, 246, 0.15);
-            color: #60a5fa;
+            background: rgba(68, 138, 255, 0.15);
+            color: #6ba3ff;
+            border: 1px solid rgba(68, 138, 255, 0.25);
         }
         .label-gold {
             background: rgba(255, 179, 0, 0.15);
             color: #ffb300;
+            border: 1px solid rgba(255, 179, 0, 0.25);
         }
         h2 {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
             font-weight: 800;
             letter-spacing: -1px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .subtitle {
             color: var(--text2);
@@ -199,17 +304,38 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 22px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 92, 92, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             border-color: #333;
         }
+        .card:hover::before {
+            opacity: 1;
+        }
         .card .icon {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .icon {
+            transform: scale(1.1);
         }
         .card h3 {
             font-size: 1.05rem;
@@ -217,31 +343,36 @@
             margin-bottom: 6px;
         }
         .card .number {
-            font-size: 2.4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.6rem;
             font-weight: 900;
-            letter-spacing: -1px;
-            margin: 8px 0;
+            letter-spacing: -1.5px;
+            margin: 10px 0;
         }
         .number.red {
             color: #ff5252;
         }
         .number.green {
-            color: #00c853;
+            color: #00e676;
         }
         .number.orange {
-            color: #ff9100;
+            color: #ff9f5c;
         }
         .number.gold {
             color: #ffb300;
         }
         .card .detail {
             background: var(--surface2);
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 10px;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 12px;
             font-size: 0.85rem;
             color: var(--text2);
             border-left: 3px solid #333;
+            transition: border-color 0.3s ease;
+        }
+        .card:hover .detail {
+            border-color: #555;
         }
         .detail strong {
             color: #fff;
@@ -253,70 +384,73 @@
             color: #777;
             letter-spacing: 0.6px;
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .big-alert {
-            background: rgba(229, 57, 53, 0.08);
-            border: 1px solid #4a1515;
+            background: rgba(255, 59, 59, 0.06);
+            border: 1px solid rgba(255, 59, 59, 0.2);
             border-radius: var(--radius);
             padding: 22px;
-            margin: 20px 0;
+            margin: 24px 0;
             font-size: 0.95rem;
             color: #ffaaaa;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 14px;
+            animation: fadeSlideIn 0.6s ease;
         }
         .big-alert .alert-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
         .gold-alert {
-            background: rgba(255, 179, 0, 0.06);
-            border: 1px solid #4a3a15;
+            background: rgba(255, 179, 0, 0.05);
+            border: 1px solid rgba(255, 179, 0, 0.2);
             border-radius: var(--radius);
             padding: 22px;
-            margin: 20px 0;
+            margin: 24px 0;
             font-size: 0.95rem;
             color: #ffdd88;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 14px;
+            animation: fadeSlideIn 0.6s ease;
         }
         .gold-alert .alert-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
         .info-box {
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid #1a3a6a;
+            background: rgba(68, 138, 255, 0.06);
+            border: 1px solid rgba(68, 138, 255, 0.2);
             border-radius: var(--radius);
             padding: 22px;
-            margin: 20px 0;
+            margin: 24px 0;
             font-size: 0.95rem;
             color: #aaccff;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 14px;
+            animation: fadeSlideIn 0.6s ease;
         }
         .info-box .info-icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.9rem;
-            margin: 15px 0;
+            margin: 20px 0;
         }
         th {
             text-align: left;
-            padding: 10px 14px;
+            padding: 12px 14px;
             background: var(--surface2);
             font-weight: 600;
             color: #ccc;
         }
         td {
-            padding: 10px 14px;
+            padding: 12px 14px;
             border-bottom: 1px solid var(--border);
             color: var(--text2);
         }
@@ -327,28 +461,30 @@
 
         .vote-bar {
             display: flex;
-            height: 20px;
-            border-radius: 4px;
+            height: 22px;
+            border-radius: 6px;
             overflow: hidden;
             background: var(--surface2);
             margin-top: 10px;
         }
         .vote-bar .pro {
-            background: #c62828;
+            background: linear-gradient(90deg, #c62828, #e53935);
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.7rem;
+            font-weight: 700;
             color: #fff;
         }
         .vote-bar .contra {
-            background: #1b5e20;
+            background: linear-gradient(90deg, #1b5e20, #2e7d32);
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.7rem;
+            font-weight: 700;
             color: #fff;
         }
 
@@ -358,11 +494,17 @@
             border-radius: var(--radius);
             padding: 24px;
             margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        .plan-card:hover {
+            border-color: #2a5a2a;
+            box-shadow: 0 10px 30px rgba(0, 230, 118, 0.08);
         }
         .plan-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 800;
             color: #00e676;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .plan-card.gold {
             border-color: #3a2a15;
@@ -370,36 +512,47 @@
         .plan-card.gold h4 {
             color: #ffb300;
         }
+        .plan-card.gold:hover {
+            border-color: #5a3a15;
+            box-shadow: 0 10px 30px rgba(255, 179, 0, 0.08);
+        }
 
         .cta {
-            background: linear-gradient(135deg, #150000, #080810);
-            border: 1px solid #2a2a2a;
+            background: linear-gradient(135deg, #1a0000, #0a0a18);
+            border: 1px solid #2a2a3a;
             border-radius: var(--radius);
-            padding: 32px 24px;
+            padding: 40px 28px;
             text-align: center;
-            margin: 20px 0;
+            margin: 30px 0;
+            animation: fadeSlideIn 0.7s ease;
         }
         .cta h3 {
-            font-size: 1.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .cta p {
             color: var(--text2);
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .btn {
             display: inline-block;
-            padding: 12px 26px;
-            border-radius: 8px;
+            padding: 14px 30px;
+            border-radius: 10px;
             font-weight: 700;
             text-decoration: none;
             color: #fff;
-            background: #b71c1c;
-            transition: background 0.2s;
+            background: linear-gradient(135deg, #c62828, #e53935);
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            cursor: pointer;
+            border: none;
         }
         .btn:hover {
-            background: #e53935;
+            background: linear-gradient(135deg, #e53935, #ff5252);
+            box-shadow: 0 8px 30px rgba(255, 59, 59, 0.35);
+            transform: translateY(-2px);
         }
 
         footer {
@@ -408,66 +561,77 @@
             color: #555;
             font-size: 0.8rem;
             border-top: 1px solid var(--border);
-            margin-top: 30px;
-        }
-
-        .lang-content {
-            display: none;
-        }
-        .lang-content.active {
-            display: block;
+            margin-top: 20px;
         }
 
         @media (max-width: 600px) {
-            .nav-links {
-                gap: 6px;
+            .tab-btn {
                 font-size: 0.7rem;
+                padding: 6px 12px;
             }
-            .lang-switch {
-                margin-top: 6px;
+            .hero-stats {
+                gap: 16px;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="container">
-            <div class="logo">Mapa<span>Real</span></div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#impostos-pt" data-pt="Quem Te Empobreceu" data-en="Tax Burden" data-jp="誰があなたを貧しくしたか">Quem Te Empobreceu</a></li>
-                <li><a href="#sistema-pt" data-pt="Quem Manda" data-en="Who Rules" data-jp="誰が支配するか">Quem Manda</a></li>
-                <li><a href="#votacoes-pt" data-pt="Votações" data-en="Votes" data-jp="議会の投票">Votações</a></li>
-                <li><a href="#estados-pt" data-pt="Regiões" data-en="Regions" data-jp="地域格差">Regiões</a></li>
-                <li><a href="#cidades-pt" data-pt="Cidades" data-en="Cities" data-jp="ゾンビ都市">Cidades</a></li>
-                <li><a href="#terrasraras-pt" data-pt="Terras Raras" data-en="Rare Earths" data-jp="レアアース">Terras Raras</a></li>
-                <li><a href="#autonomia-pt" data-pt="Autonomia" data-en="Autonomy" data-jp="自律">Autonomia</a></li>
-                <li><a href="#noses-pt" data-pt="Nós vs Eles" data-en="Us vs Them" data-jp="我々対彼ら">Nós vs Eles</a></li>
-                <li><a href="#povo-pt" data-pt="O Povo" data-en="The People" data-jp="民衆">O Povo</a></li>
-                <li><a href="#plano-pt" data-pt="Plano" data-en="Plan" data-jp="計画">Plano</a></li>
-                <li><a href="#regras-pt" data-pt="Regras" data-en="Rules" data-jp="規則">Regras</a></li>
-                <li><a href="#sem-revolucao-pt" data-pt="Mudar" data-en="Change" data-jp="変革">Mudar</a></li>
-            </ul>
-            <div class="lang-switch">
-                <button onclick="switchLang('pt')" class="active" id="btn-pt">PT</button>
-                <button onclick="switchLang('en')" id="btn-en">EN</button>
-                <button onclick="switchLang('jp')" id="btn-jp">日本語</button>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="pulse"></div>
+                Mapa<span>Real</span>
             </div>
         </div>
-    </nav>
+        <!-- Abas de navegação -->
+        <div class="tab-nav" id="tab-nav">
+            <button class="tab-btn active" data-tab="tab-inicio">🏠 Início</button>
+            <button class="tab-btn" data-tab="tab-impostos">📊 Impostos</button>
+            <button class="tab-btn" data-tab="tab-sistema">🏛️ Quem Manda</button>
+            <button class="tab-btn" data-tab="tab-votacoes">🗳️ Votações</button>
+            <button class="tab-btn" data-tab="tab-estados">🌍 Regiões</button>
+            <button class="tab-btn" data-tab="tab-cidades">🏚️ Cidades</button>
+            <button class="tab-btn" data-tab="tab-terrasraras">⛏️ Terras Raras</button>
+            <button class="tab-btn" data-tab="tab-autonomia">🇧🇷 Autonomia</button>
+            <button class="tab-btn" data-tab="tab-noses">🎭 Nós vs Eles</button>
+            <button class="tab-btn" data-tab="tab-povo">🧠 O Povo</button>
+            <button class="tab-btn" data-tab="tab-plano">✅ Plano</button>
+            <button class="tab-btn" data-tab="tab-regras">🔒 Regras</button>
+            <button class="tab-btn" data-tab="tab-mudar">🔄 Mudar</button>
+        </div>
+    </div>
 
-    <!-- ==================== PORTUGUÊS ==================== -->
-    <div class="lang-content active" id="content-pt">
-
+    <!-- ==================== ABA INÍCIO ==================== -->
+    <div class="tab-content active" id="tab-inicio">
         <section class="hero">
             <div class="container">
                 <h1>O Sistema Não É Inimigo.<br>Ele É <mark>Indiferente</mark>.</h1>
                 <p>Enquanto você briga por bandeira, 594 pessoas decidem como torrar R$ 4 trilhões por ano. E eles nem sabem seu nome.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat"><div class="stat-num">R$ 4 tri</div><div class="stat-label">Orçamento anual</div></div>
+                    <div class="hero-stat"><div class="stat-num">594</div><div class="stat-label">Decidem tudo</div></div>
+                    <div class="hero-stat"><div class="stat-num">33,2%</div><div class="stat-label">Carga tributária</div></div>
+                </div>
             </div>
         </section>
+        <section>
+            <div class="container">
+                <div class="grid">
+                    <div class="card"><div class="icon">📊</div><h3>Carga tributária recorde</h3><div class="number red">33,2%</div><p style="color:var(--text2);">do PIB em 2024 — a maior da história.</p></div>
+                    <div class="card"><div class="icon">🛒</div><h3>Comida disparou</h3><div class="number red">+18%</div><p style="color:var(--text2);">inflação de alimentos em 2 anos.</p></div>
+                    <div class="card"><div class="icon">🏛️</div><h3>Congresso controla</h3><div class="number red">R$ 70 bi</div><p style="color:var(--text2);">em emendas impositivas.</p></div>
+                    <div class="card"><div class="icon">⛏️</div><h3>Terras Raras</h3><div class="number gold">21 mi tons</div><p style="color:var(--text2);">2ª maior reserva — e não processamos.</p></div>
+                </div>
+                <div class="cta"><h3>🧠 Navegue pelas abas acima.</h3><p>Cada uma revela uma camada do mapa real do poder. Sem partido. Sem ídolo. Só dados.</p></div>
+            </div>
+        </section>
+    </div>
 
-        <!-- IMPOSTOS -->
-        <section id="impostos-pt">
+    <!-- ==================== ABA IMPOSTOS ==================== -->
+    <div class="tab-content" id="tab-impostos">
+        <section>
             <div class="container">
                 <span class="section-label label-red">DESTAQUE ESTRATÉGICO</span>
                 <h2>O governo que mais aumentou impostos e corroeu seu poder de compra</h2>
@@ -477,290 +641,251 @@
                     <tbody>
                         <tr><td><strong>Carga Tributária (% PIB)</strong></td><td>32,3% → 32,1%</td><td>31,8% → 32,9%</td><td class="drain">33,2% (2024) — RECORDE HISTÓRICO</td></tr>
                         <tr><td><strong>Impostos criados no mandato</strong></td><td>Nenhum relevante</td><td>Nenhum relevante</td><td class="drain">Taxa de 44% sobre compras internacionais; Reoneração da folha; MP das subvenções do ICMS</td></tr>
-                        <tr><td><strong>Tabela do IRPF</strong></td><td>Congelada (herança Dilma)</td><td>Congelada por 4 anos</td><td class="drain">Corrigida só para até 2 salários mínimos. Classe média segue congelada.</td></tr>
-                        <tr><td><strong>Inflação Alimentos (IPCA, dentro do domicílio)</strong></td><td>-1,87% (2017, deflação)</td><td>+13,4% (2022)</td><td class="drain">+18% acumulado (jan/23 a fev/25). Café +60%, laranja +100%.</td></tr>
-                        <tr><td><strong>Arrecadação Total (ano mais recente)</strong></td><td>R$ 1,9 tri (2018)</td><td>R$ 3,2 tri (2022)</td><td class="drain">R$ 3,9 tri (2024) — RECORDE HISTÓRICO</td></tr>
-                        <tr><td><strong>Poder de compra do salário mínimo (cesta básica)</strong></td><td>Estável</td><td>Queda acentuada</td><td class="drain">Queda contínua (preço dos alimentos sobe mais que o reajuste)</td></tr>
+                        <tr><td><strong>Tabela do IRPF</strong></td><td>Congelada (herança Dilma)</td><td>Congelada por 4 anos</td><td class="drain">Corrigida só para até 2 SM. Classe média segue congelada.</td></tr>
+                        <tr><td><strong>Inflação Alimentos</strong></td><td>-1,87% (2017)</td><td>+13,4% (2022)</td><td class="drain">+18% acumulado (jan/23 a fev/25). Café +60%, laranja +100%.</td></tr>
+                        <tr><td><strong>Arrecadação Total</strong></td><td>R$ 1,9 tri (2018)</td><td>R$ 3,2 tri (2022)</td><td class="drain">R$ 3,9 tri (2024) — RECORDE</td></tr>
+                        <tr><td><strong>Poder de compra (cesta básica)</strong></td><td>Estável</td><td>Queda acentuada</td><td class="drain">Queda contínua</td></tr>
                     </tbody>
                 </table>
-                <div class="big-alert">
-                    <span class="alert-icon">📊</span>
-                    <div><strong>Veredicto baseado em dados:</strong> O governo Lula 3 entrega o <strong>recorde histórico de carga tributária (33,2% do PIB)</strong>, a <strong>maior inflação de alimentos desde o Plano Real</strong>, e <strong>criou novos impostos</strong> sobre consumo popular que não existiam. Nenhum outro governo recente aumentou tanto a mordida do Estado enquanto o poder de compra despencava. A conta é paga por você — e os números não têm partido.</div>
-                </div>
+                <div class="big-alert"><span class="alert-icon">📊</span><div><strong>Veredicto:</strong> O governo Lula 3 entrega o recorde de carga tributária, a maior inflação de alimentos e criou impostos novos sobre consumo popular. Nenhum governo recente aumentou tanto a mordida do Estado enquanto o poder de compra despencava.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- SISTEMA -->
-        <section id="sistema-pt" style="background: var(--surface);">
+    <!-- ==================== ABA SISTEMA ==================== -->
+    <div class="tab-content" id="tab-sistema">
+        <section>
             <div class="container">
                 <span class="section-label label-red">O PODER REAL</span>
                 <h2>Quem realmente manda no país</h2>
                 <p class="subtitle">Não é o presidente. São 594 pessoas que você não vê na manchete.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🏛️</div><h3>513 Deputados Federais</h3><div class="number red">R$ 50 bi</div><p style="font-size:0.85rem; color:var(--text2);">Orçamento impositivo em 2025 (emendas).</p><div class="detail"><span class="tagline">O que fazem com seu dinheiro</span>Cada deputado controla em média <strong>R$ 97 milhões</strong> em emendas por ano. Desse valor, <strong>80% vai para redutos eleitorais</strong> sem critério técnico. Obras inacabadas, asfalto em rua de parente, festa junina bancada com verba federal.</div></div>
-                    <div class="card"><div class="icon">🪑</div><h3>81 Senadores</h3><div class="number red">R$ 20 bi</div><p style="font-size:0.85rem; color:var(--text2);">Emendas de senadores em 2025.</p><div class="detail"><span class="tagline">O que fazem com seu dinheiro</span>Cada senador tem à disposição <strong>R$ 250 milhões</strong> por ano em emendas. Muitos destinam a estados sem prestar contas claras. Enquanto isso, o Brasil tem <strong>8.500 obras paradas</strong>, a maioria por má gestão e corrupção.</div></div>
-                    <div class="card"><div class="icon">💸</div><h3>Fundo Eleitoral</h3><div class="number red">R$ 5,7 bi</div><p style="font-size:0.85rem; color:var(--text2);">Dinheiro público para campanhas em 2024.</p><div class="detail"><span class="tagline">Na prática</span>Os mesmos políticos que você elege <strong>votaram para dar R$ 5,7 bilhões a si mesmos</strong> em 2024. É o maior fundo eleitoral do mundo. Com esse valor, daria para construir <strong>570 escolas de ensino médio</strong> ou <strong>57 hospitais regionais</strong>.</div></div>
-                    <div class="card"><div class="icon">📋</div><h3>Salários e Benefícios</h3><div class="number red">R$ 44 mil</div><p style="font-size:0.85rem; color:var(--text2);">Salário base de um deputado federal.</p><div class="detail"><span class="tagline">Na prática</span>Um deputado custa aos cofres públicos cerca de <strong>R$ 180 mil por mês</strong> (salário + verba de gabinete + auxílio moradia + cota parlamentar + auxílio saúde + verba para contratar 25 assessores). Isso é <strong>127 salários mínimos</strong> por mês.</div></div>
+                    <div class="card"><div class="icon">🏛️</div><h3>513 Deputados Federais</h3><div class="number red">R$ 50 bi</div><p style="font-size:0.85rem;color:var(--text2);">Orçamento impositivo em 2025.</p><div class="detail"><span class="tagline">O que fazem</span>Cada deputado controla <strong>R$ 97 milhões</strong> em emendas. <strong>80% vai para redutos eleitorais</strong> sem critério técnico.</div></div>
+                    <div class="card"><div class="icon">🪑</div><h3>81 Senadores</h3><div class="number red">R$ 20 bi</div><p style="font-size:0.85rem;color:var(--text2);">Emendas em 2025.</p><div class="detail"><span class="tagline">O que fazem</span>Cada senador: <strong>R$ 250 milhões/ano</strong>. Brasil tem <strong>8.500 obras paradas</strong>.</div></div>
+                    <div class="card"><div class="icon">💸</div><h3>Fundo Eleitoral</h3><div class="number red">R$ 5,7 bi</div><p style="font-size:0.85rem;color:var(--text2);">Dinheiro público para campanhas.</p><div class="detail"><span class="tagline">Na prática</span>Eles <strong>votaram para dar R$ 5,7 bi a si mesmos</strong>. Maior fundo eleitoral do mundo.</div></div>
+                    <div class="card"><div class="icon">📋</div><h3>Custo Real</h3><div class="number red">R$ 180 mil</div><p style="font-size:0.85rem;color:var(--text2);">Custo mensal de 1 deputado.</p><div class="detail"><span class="tagline">Na prática</span>Salário + gabinete + auxílios + 25 assessores = <strong>127 salários mínimos</strong>.</div></div>
                 </div>
-                <div class="big-alert"><span class="alert-icon">⚠️</span><div><strong>O orçamento é sequestrado.</strong> Em 2025, o Congresso controla <strong>R$ 70 bilhões</strong> em emendas impositivas. O presidente precisa negociar cada projeto. Quem manda de fato não é eleito com voto nacional — é o bloco do Centrão, que existe há 30 anos e já esteve em todos os governos.</div></div>
+                <div class="big-alert"><span class="alert-icon">⚠️</span><div><strong>O orçamento é sequestrado.</strong> O Congresso controla R$ 70 bilhões em emendas impositivas. O presidente negocia cada projeto. Quem manda é o Centrão, que existe há 30 anos e já esteve em todos os governos.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- VOTAÇÕES -->
-        <section id="votacoes-pt">
+    <!-- ==================== ABA VOTAÇÕES ==================== -->
+    <div class="tab-content" id="tab-votacoes">
+        <section>
             <div class="container">
                 <span class="section-label label-orange">VOTAÇÕES QUE PIORAM SUA VIDA</span>
                 <h2>Os deputados que votam contra você — e como</h2>
-                <p class="subtitle">Não é opinião: é matemática. Veja exemplos reais de votações na Câmara onde a maioria aprovou medidas que sangram o contribuinte ou protegem privilégios.</p>
+                <p class="subtitle">Não é opinião: é matemática.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🗳️</div><h3>Aumento do Fundão Eleitoral</h3><div class="number red">349 votos</div><p style="font-size:0.85rem; color:var(--text2);">Deputados que aprovaram R$ 5,7 bi.</p><div class="detail"><span class="tagline">Quem votou a favor</span><strong>68% da Câmara</strong> votou para aumentar o Fundão de R$ 2 bi para R$ 5,7 bi. Entre os que votaram "sim", estavam <strong>deputados de todos os espectros políticos</strong>, inclusive os que se dizem "contra gastos públicos".</div><div class="vote-bar"><div class="pro" style="width:68%;">A favor 68%</div><div class="contra" style="width:32%;">Contra 32%</div></div></div>
-                    <div class="card"><div class="icon">💼</div><h3>Reajuste do Judiciário e MP</h3><div class="number red">R$ 1,7 bi</div><p style="font-size:0.85rem; color:var(--text2);">Impacto anual do aumento aprovado.</p><div class="detail"><span class="tagline">Quem votou a favor</span>A Câmara aprovou por <strong>esmagadora maioria</strong> o reajuste de 18% para juízes e procuradores, elevando o teto para <strong>R$ 41 mil</strong>. O efeito cascata nos estados custa <strong>R$ 3 bilhões/ano</strong>.</div></div>
-                    <div class="card"><div class="icon">🏖️</div><h3>Férias de 60 dias para juízes</h3><div class="number red">60 dias</div><p style="font-size:0.85rem; color:var(--text2);">Férias anuais + recesso forense.</p><div class="detail"><span class="tagline">Quem impede a mudança</span>Projetos para limitar férias a 30 dias nunca avançam. A justificativa é "independência do Judiciário". Na prática, o Congresso não vota por <strong>medo de retaliação judicial</strong>.</div></div>
-                    <div class="card"><div class="icon">🔇</div><h3>Anistia a Dívidas de Partidos</h3><div class="number red">R$ 23 bi</div><p style="font-size:0.85rem; color:var(--text2);">Perdão de multas eleitorais e previdenciárias.</p><div class="detail"><span class="tagline">Quem votou a favor</span>Em 2024, o Congresso aprovou a <strong>anistia de R$ 23 bilhões</strong> em dívidas de partidos políticos. A votação foi <strong>simbólica</strong> (sem registro nominal) para esconder os nomes.</div></div>
-                    <div class="card"><div class="icon">🚫</div><h3>Imunidade Parlamentar Ampliada</h3><div class="number red">90%</div><p style="font-size:0.85rem; color:var(--text2);">Dos inquéritos contra deputados são arquivados.</p><div class="detail"><span class="tagline">Por que isso nunca muda</span>Projetos para reduzir o foro privilegiado ou facilitar a cassação de mandato por quebra de decoro são <strong>sistematicamente engavetados</strong> pela Mesa Diretora.</div></div>
-                    <div class="card"><div class="icon">📜</div><h3>Votações de "Dia do Não Sei O Quê"</h3><div class="number red">300+</div><p style="font-size:0.85rem; color:var(--text2);">Projetos de lei inúteis aprovados por ano.</p><div class="detail"><span class="tagline">Exemplos reais</span>A Câmara gasta horas votando projetos como: <strong>Dia Nacional do Brega</strong>, <strong>Dia do Tecladista</strong>, <strong>Semana da Conciliação</strong>. Cada sessão custa <strong>R$ 200 mil</strong> aos cofres públicos.</div></div>
+                    <div class="card"><div class="icon">🗳️</div><h3>Aumento do Fundão</h3><div class="number red">349 votos</div><div class="detail">68% da Câmara votou a favor. Deputados de todos os espectros.</div><div class="vote-bar"><div class="pro" style="width:68%;">A favor 68%</div><div class="contra" style="width:32%;">Contra 32%</div></div></div>
+                    <div class="card"><div class="icon">💼</div><h3>Reajuste do Judiciário</h3><div class="number red">R$ 1,7 bi</div><div class="detail">Aumento de 18% para juízes. Efeito cascata: R$ 3 bi/ano.</div></div>
+                    <div class="card"><div class="icon">🏖️</div><h3>Férias de 60 dias</h3><div class="number red">60 dias</div><div class="detail">Projetos para limitar a 30 dias nunca avançam. Medo de retaliação judicial.</div></div>
+                    <div class="card"><div class="icon">🔇</div><h3>Anistia de Partidos</h3><div class="number red">R$ 23 bi</div><div class="detail">Perdão de multas aprovado em votação simbólica para esconder nomes.</div></div>
+                    <div class="card"><div class="icon">🚫</div><h3>Imunidade Blindada</h3><div class="number red">90%</div><div class="detail">Dos inquéritos contra deputados são arquivados.</div></div>
+                    <div class="card"><div class="icon">📜</div><h3>Leis Inúteis</h3><div class="number red">300+</div><div class="detail">Dia do Brega, Dia do Tecladista... Cada sessão custa R$ 200 mil.</div></div>
                 </div>
-                <div class="big-alert"><span class="alert-icon">📊</span><div><strong>O padrão é claro.</strong> Quando a votação é para aumentar salário, fundo eleitoral ou anistiar dívida de partido, a aprovação é <strong>rápida e com ampla maioria</strong>. Quando é para cortar privilégios, reduzir imposto ou punir corrupção, o projeto <strong>some na gaveta</strong>.</div></div>
+                <div class="big-alert"><span class="alert-icon">📊</span><div><strong>O padrão é claro.</strong> Para aumentar salário e Fundão, aprovação rápida. Para cortar privilégio, o projeto some na gaveta.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- ESTADOS -->
-        <section id="estados-pt" style="background: var(--surface);">
+    <!-- ==================== ABA REGIÕES ==================== -->
+    <div class="tab-content" id="tab-estados">
+        <section>
             <div class="container">
                 <span class="section-label label-orange">MAL-ESTAR FEDERATIVO</span>
                 <h2>Quem paga e quem recebe</h2>
-                <p class="subtitle">Estados que produzem sustentam estados que consomem. Os dados expõem um pacto silencioso.</p>
+                <p class="subtitle">Estados que produzem sustentam estados que consomem.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🏭</div><h3>São Paulo — O motor do país</h3><div class="number red">R$ 3,0 tri</div><p style="font-size:0.85rem; color:var(--text2);">PIB em 2024 (33% do Brasil).</p><div class="detail"><span class="tagline">O que recebe de volta</span>SP gera <strong>33% do PIB nacional</strong>, mas recebe apenas <strong>18% das transferências federais</strong>. Cada paulista transfere em média <strong>R$ 3.200 por ano</strong> para outros estados via fundos constitucionais.</div></div>
-                    <div class="card"><div class="icon">🌍</div><h3>Nordeste — Dependência estrutural</h3><div class="number orange">47%</div><p style="font-size:0.85rem; color:var(--text2);">dos municípios nordestinos dependem 90%+ de repasses.</p><div class="detail"><span class="tagline">O paradoxo</span>O Nordeste tem <strong>27% da população</strong>, mas recebe <strong>35% das transferências federais</strong>. Mais de <strong>800 cidades nordestinas</strong> têm o FPM como única receita relevante.</div></div>
-                    <div class="card"><div class="icon">📉</div><h3>Norte — Riqueza natural, pobreza local</h3><div class="number orange">R$ 600</div><p style="font-size:0.85rem; color:var(--text2);">PIB per capita mensal no Pará.</p><div class="detail"><span class="tagline">O paradoxo</span>O Pará exporta minério de ferro e tem um dos piores IDHs do país. A Vale paga <strong>menos de 2% de imposto sobre o lucro</strong> via paraíso fiscal.</div></div>
-                    <div class="card"><div class="icon">🔗</div><h3>O pacto silencioso</h3><div class="number red">R$ 500 bi</div><p style="font-size:0.85rem; color:var(--text2);">Transferidos entre estados via fundos em 2024.</p><div class="detail"><span class="tagline">Por que ninguém fala disso</span>Estados superavitários bancam os deficitários. O sistema é mantido porque <strong>deputados do Norte/Nordeste votam em bloco</strong> para preservar os repasses. Verba em troca de apoio político.</div></div>
+                    <div class="card"><div class="icon">🏭</div><h3>São Paulo — O motor</h3><div class="number red">R$ 3,0 tri</div><div class="detail">SP gera 33% do PIB, recebe 18% das transferências. Cada paulista transfere R$ 3.200/ano para outros estados.</div></div>
+                    <div class="card"><div class="icon">🌍</div><h3>Nordeste — Dependência</h3><div class="number orange">47%</div><div class="detail">27% da população, 35% das transferências. 800+ cidades têm FPM como única receita.</div></div>
+                    <div class="card"><div class="icon">📉</div><h3>Norte — Riqueza pobre</h3><div class="number orange">R$ 600</div><div class="detail">PIB per capita no Pará. Exporta minério, mas Vale paga menos de 2% de imposto via paraíso fiscal.</div></div>
+                    <div class="card"><div class="icon">🔗</div><h3>O pacto silencioso</h3><div class="number red">R$ 500 bi</div><div class="detail">Transferidos entre estados em 2024. Deputados do Norte/Nordeste votam em bloco por repasses.</div></div>
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- CIDADES -->
-        <section id="cidades-pt">
+    <!-- ==================== ABA CIDADES ==================== -->
+    <div class="tab-content" id="tab-cidades">
+        <section>
             <div class="container">
                 <span class="section-label label-red">CIDADES ZUMBI</span>
-                <h2>Prefeituras que só existem por causa de repasse</h2>
-                <p class="subtitle">Milhares de cidades no Brasil são inviáveis economicamente. Sobrevivem de transferências obrigatórias.</p>
+                <h2>Prefeituras que só existem por repasse</h2>
+                <p class="subtitle">Milhares de cidades são inviáveis economicamente.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🏚️</div><h3>Municípios artificiais</h3><div class="number red">1.200+</div><p style="font-size:0.85rem; color:var(--text2);">cidades com menos de 5 mil habitantes.</p><div class="detail"><span class="tagline">Na prática</span><strong>90% da receita</strong> vem do FPM. A prefeitura emprega metade da cidade, não há atividade econômica real. Cada um desses municípios custa <strong>R$ 8 milhões/ano</strong> só para manter a máquina administrativa.</div></div>
-                    <div class="card"><div class="icon">💼</div><h3>Cabides de emprego</h3><div class="number red">40%</div><p style="font-size:0.85rem; color:var(--text2);">dos empregos em cidades pequenas são públicos.</p><div class="detail"><span class="tagline">Na prática</span>Em cidades como <strong>Bom Jesus do Tocantins (PA)</strong>, a prefeitura emprega <strong>60% da população ativa</strong>. Só a máquina pública girando com dinheiro federal.</div></div>
-                    <div class="card"><div class="icon">🏗️</div><h3>Obras paradas</h3><div class="number red">8.500</div><p style="font-size:0.85rem; color:var(--text2);">obras federais paralisadas em 2025.</p><div class="detail"><span class="tagline">Na prática</span>São <strong>R$ 150 bilhões</strong> em obras inacabadas: creches, postos de saúde, estradas. O dinheiro foi liberado, a obra começou e parou. Enquanto isso, novas emendas são liberadas para novas obras que também vão parar.</div></div>
+                    <div class="card"><div class="icon">🏚️</div><h3>Municípios artificiais</h3><div class="number red">1.200+</div><div class="detail">Cidades com menos de 5 mil habitantes. 90% da receita vem do FPM. Custo: R$ 8 milhões/ano cada.</div></div>
+                    <div class="card"><div class="icon">💼</div><h3>Cabides de emprego</h3><div class="number red">40%</div><div class="detail">Dos empregos em cidades pequenas são públicos. Prefeitura emprega 60% da população ativa.</div></div>
+                    <div class="card"><div class="icon">🏗️</div><h3>Obras paradas</h3><div class="number red">8.500</div><div class="detail">R$ 150 bilhões em obras inacabadas. Dinheiro liberado, obra parou. Novas emendas para novas obras.</div></div>
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- TERRAS RARAS -->
-        <section id="terrasraras-pt" style="background: var(--surface);">
+    <!-- ==================== ABA TERRAS RARAS ==================== -->
+    <div class="tab-content" id="tab-terrasraras">
+        <section>
             <div class="container">
                 <span class="section-label label-gold">SOBERANIA MINERAL</span>
                 <h2>Terras Raras: O Brasil sentado em ouro e pedindo esmola</h2>
-                <p class="subtitle">O país tem a segunda maior reserva de terras raras do mundo. Enquanto isso, a China controla 70% do mercado global e dita preços. Um plano nacional para esse setor não é ideologia — é sobrevivência.</p>
+                <p class="subtitle">O país tem a segunda maior reserva do mundo. A China controla 70% do mercado.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">⛏️</div><h3>Reserva Brasileira</h3><div class="number gold">21 milhões</div><p style="font-size:0.85rem; color:var(--text2);">de toneladas em terras raras (2ª maior do mundo).</p><div class="detail"><span class="tagline">O absurdo</span>O Brasil tem <strong>17% das reservas globais</strong> e produz <strong>menos de 1%</strong>. A mina de Araxá (MG) e o depósito de Morro dos Seis Lagos (AM) estão subexplorados há décadas.</div></div>
-                    <div class="card"><div class="icon">🔋</div><h3>Demanda Explosiva</h3><div class="number gold">+400%</div><p style="font-size:0.85rem; color:var(--text2);">de aumento na demanda até 2040 (AIE).</p><div class="detail"><span class="tagline">Por quê</span>Terras raras são essenciais para ímãs de turbinas eólicas, baterias de veículos elétricos, telas de celular, equipamentos militares. Quem controla as terras raras controla a transição energética global.</div></div>
-                    <div class="card"><div class="icon">🇨🇳</div><h3>Dependência Chinesa</h3><div class="number gold">70%</div><p style="font-size:0.85rem; color:var(--text2);">do mercado global controlado pela China.</p><div class="detail"><span class="tagline">O risco</span>Em 2023, a China ameaçou restringir exportação de terras raras para os EUA. O Brasil poderia ser o fornecedor alternativo — mas não tem nem planta de processamento em escala.</div></div>
+                    <div class="card"><div class="icon">⛏️</div><h3>Reserva Brasileira</h3><div class="number gold">21 milhões</div><div class="detail">17% das reservas globais. Produção: menos de 1%. Araxá e Morro dos Seis Lagos subexplorados.</div></div>
+                    <div class="card"><div class="icon">🔋</div><h3>Demanda Explosiva</h3><div class="number gold">+400%</div><div class="detail">Até 2040 (AIE). Essenciais para turbinas eólicas, baterias EV, equipamentos militares.</div></div>
+                    <div class="card"><div class="icon">🇨🇳</div><h3>Dependência Chinesa</h3><div class="number gold">70%</div><div class="detail">China controla mercado global. Em 2023 ameaçou restringir exportação aos EUA.</div></div>
                 </div>
-                <div class="plan-card gold"><h4>Plano Nacional de Terras Raras (5 etapas)</h4><p style="font-size:0.9rem; color:var(--text2);"><strong>1. Mapeamento completo:</strong> Concluir o levantamento geológico das jazidas (Araxá, Catalão, Morro dos Seis Lagos, Poços de Caldas) em 2 anos. Custo: R$ 500 milhões.<br><strong>2. Planta de processamento:</strong> Construir a primeira refinaria nacional de separação de óxidos raros. Sem isso, exportamos minério bruto e importamos o produto processado 100x mais caro. Custo: R$ 5 bilhões.<br><strong>3. Proibição de exportação de minério bruto:</strong> Só sai do país óxido processado. Gera empregos qualificados e retém valor. Modelo: Indonésia com níquel (funcionou).<br><strong>4. Aliança tecnológica:</strong> Parceria com Japão, EUA e Coreia do Sul para transferência de tecnologia de separação — sem entregar o controle das jazidas.<br><strong>5. Fundo Soberano dos Minerais:</strong> 30% da receita das terras raras vai para um fundo que financia educação técnica e infraestrutura. O subsolo é da nação — o lucro também deve ser.<br><strong>Impacto estimado: R$ 40 bilhões/ano em exportações e 200 mil empregos diretos em 10 anos.</strong></p></div>
-                <div class="gold-alert"><span class="alert-icon">⚡</span><div><strong>O que falta?</strong> Vontade política. O minério está lá. A demanda está lá. O que falta é um plano de Estado que atravesse governos — e a coragem de enfrentar a Vale e outros grupos que preferem exportar bruto e manter o país cativo da commodity barata.</div></div>
+                <div class="plan-card gold"><h4>Plano Nacional (5 etapas)</h4><p style="color:var(--text2);"><strong>1.</strong> Mapeamento completo em 2 anos.<br><strong>2.</strong> Primeira refinaria nacional de óxidos raros.<br><strong>3.</strong> Proibição de exportar minério bruto.<br><strong>4.</strong> Aliança tecnológica com Japão, EUA, Coreia.<br><strong>5.</strong> Fundo Soberano: 30% da receita para educação e infraestrutura.<br><strong>Impacto: R$ 40 bi/ano e 200 mil empregos em 10 anos.</strong></p></div>
+                <div class="gold-alert"><span class="alert-icon">⚡</span><div><strong>O que falta?</strong> Vontade política. O minério está lá. A demanda está lá.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- AUTONOMIA -->
-        <section id="autonomia-pt">
+    <!-- ==================== ABA AUTONOMIA ==================== -->
+    <div class="tab-content" id="tab-autonomia">
+        <section>
             <div class="container">
                 <span class="section-label label-gold">VONTADE DA NAÇÃO</span>
                 <h2>Autonomia Nacional: o discurso que todos fazem e ninguém entrega</h2>
-                <p class="subtitle">"O Brasil acima de tudo" e "soberania nacional" são frases de campanha. Na prática, o Brasil é exportador de matéria-prima barata e importador de tecnologia cara. Autonomia de verdade exige plano — não slogan.</p>
+                <p class="subtitle">"O Brasil acima de tudo" é slogan. Na prática, exportamos matéria-prima barata e importamos tecnologia cara.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🏭</div><h3>Desindustrialização</h3><div class="number red">11%</div><p style="font-size:0.85rem; color:var(--text2);">Participação da indústria no PIB (já foi 35% em 1985).</p><div class="detail"><span class="tagline">O vexame</span>O Brasil importa <strong>95% dos semicondutores</strong> que consome. Produz aço bruto e exporta para a China — que devolve o aço processado 10x mais caro. Autonomia é agregar valor, não vender minério.</div></div>
-                    <div class="card"><div class="icon">🌾</div><h3>Autonomia Alimentar Real</h3><div class="number green">90%</div><p style="font-size:0.85rem; color:var(--text2);">do trigo consumido é importado.</p><div class="detail"><span class="tagline">O paradoxo</span>Maior exportador de soja do mundo, o Brasil importa <strong>metade do trigo</strong> da Argentina. Autonomia nacional significa ter estoques reguladores e política agrícola de segurança — não depender de importação de comida básica.</div></div>
-                    <div class="card"><div class="icon">🛡️</div><h3>Defesa e Tecnologia</h3><div class="number gold">R$ 35 bi</div><p style="font-size:0.85rem; color:var(--text2);">investimento necessário no Complexo Industrial de Defesa.</p><div class="detail"><span class="tagline">O gap</span>O Brasil compra caças, satélites e radares de fora. A Embraer é a exceção. Um plano de autonomia exige domínio sobre satélites, cibersegurança, e produção nacional de componentes críticos — como Israel e Coreia do Sul fizeram.</div></div>
+                    <div class="card"><div class="icon">🏭</div><h3>Desindustrialização</h3><div class="number red">11%</div><div class="detail">Participação da indústria no PIB (era 35% em 1985). Importamos 95% dos semicondutores.</div></div>
+                    <div class="card"><div class="icon">🌾</div><h3>Autonomia Alimentar</h3><div class="number green">90%</div><div class="detail">Do trigo é importado. Maior exportador de soja, importa metade do trigo da Argentina.</div></div>
+                    <div class="card"><div class="icon">🛡️</div><h3>Defesa e Tecnologia</h3><div class="number gold">R$ 35 bi</div><div class="detail">Investimento necessário no Complexo Industrial de Defesa. Compramos caças e satélites de fora.</div></div>
                 </div>
-                <div class="gold-alert"><span class="alert-icon">🎯</span><div><strong>Autonomia não é isolamento.</strong> É poder negociar de igual para igual. O Japão não tem minério — mas controla a cadeia de processamento. O Brasil tem o minério e não controla nada. A diferença? Plano de Estado. Não discurso de palanque.</div></div>
+                <div class="gold-alert"><span class="alert-icon">🎯</span><div><strong>Autonomia não é isolamento.</strong> É negociar de igual para igual. O Japão controla a cadeia de processamento. O Brasil tem o minério e não controla nada.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- NÓS VS ELES -->
-        <section id="noses-pt" style="background: var(--surface);">
+    <!-- ==================== ABA NÓS VS ELES ==================== -->
+    <div class="tab-content" id="tab-noses">
+        <section>
             <div class="container">
                 <span class="section-label label-blue">A GRANDE ILUSÃO</span>
                 <h2>"Nós contra eles" não existe. É uma fábrica de distração.</h2>
-                <p class="subtitle">A divisão que você sente no peito não nasceu de divergências reais. Foi meticulosamente construída para manter o sistema intocado.</p>
-                <div class="info-box"><span class="info-icon">🧠</span><div><strong>O maior truque já aplicado na política brasileira:</strong> Convencer o trabalhador de São Paulo e o trabalhador do Maranhão de que são inimigos — enquanto os dois frequentam o mesmo SUS, ganham o mesmo salário mínimo, e pagam a mesma carga tributária de 33% sobre tudo que consomem. O verdadeiro conflito nunca foi entre regiões. Foi entre quem produz e quem parasita o orçamento.</div></div>
+                <p class="subtitle">A divisão foi meticulosamente construída para manter o sistema intocado.</p>
+                <div class="info-box"><span class="info-icon">🧠</span><div>O maior truque: convencer o trabalhador de SP e do Maranhão de que são inimigos — enquanto ambos usam o mesmo SUS, ganham o mesmo mínimo, e pagam 33% de imposto sobre tudo.</div></div>
                 <div class="grid">
-                    <div class="card"><div class="icon">🎭</div><h3>O teatro da divisão</h3><p style="font-size:0.9rem; color:var(--text2);">A polarização política é a ferramenta de controle mais eficiente já criada. Com metade da população odiando a outra metade, ninguém olha para a planilha de gastos. Enquanto você briga com seu tio no WhatsApp, o Congresso aprova mais uma emenda que sangra R$ 500 milhões.</p><div class="detail"><span class="tagline">Evidência</span>Em 2024, enquanto o Brasil discutia se Lula ou Bolsonaro era o salvador, <strong>349 deputados de ambos os lados</strong> votaram juntos pelo aumento do Fundão. A divisão é de fachada. Na hora de sangrar o erário, eles são um só time.</div></div>
-                    <div class="card"><div class="icon">🪞</div><h3>O espelho quebrado</h3><p style="font-size:0.9rem; color:var(--text2);">O eleitor de direita e o eleitor de esquerda compartilham as mesmas dores: medo do desemprego, angústia com o preço da comida, revolta com a corrupção. As pautas são iguais. O que muda é o símbolo que colocam na culpa. O sistema oferece dois bodes expiatórios diferentes e deixa a máquina intocada.</p><div class="detail"><span class="tagline">Na prática</span>Pesquisa Datafolha (2024): <strong>78% dos brasileiros</strong> acham que o país está no rumo errado, independentemente de quem apoiam. A insatisfação é comum. A atribuição da culpa é que foi sequestrada por narrativas opostas.</div></div>
-                    <div class="card"><div class="icon">🧩</div><h3>A engenharia do conflito</h3><p style="font-size:0.9rem; color:var(--text2);">A mídia segmentada, os algoritmos de redes sociais e os marqueteiros políticos sabem que <strong>raiva gera engajamento</strong>. Cada post indignado, cada compartilhamento irado, cada comentário agressivo alimenta a máquina de anúncios. Você é o produto. Sua raiva é o combustível. E o sistema agradece.</p><div class="detail"><span class="tagline">Exemplo real</span>Uma manchete "Governo anuncia projeto de infraestrutura" tem 500 visualizações. "Governo quer enfiar a mão no seu bolso com novo imposto" tem 500 mil. O algoritmo não quer informar — quer inflamar. E você cai.</div></div>
-                    <div class="card"><div class="icon">🔓</div><h3>O que acontece quando a ilusão cai</h3><p style="font-size:0.9rem; color:var(--text2);">Quando o abastecimento colapsa, quando o PIX para, quando a comida some da prateleira, a polarização desaparece em 24 horas. A história prova: na greve dos caminhoneiros de 2018, esquerda e direita aplaudiram os mesmos grevistas. O instinto de sobrevivência dissolve qualquer narrativa.</p><div class="detail"><span class="tagline">A verdade nua</span>Não existe "nós contra eles". Existe <strong>"nós" — os que pagam a conta</strong> — e <strong>"eles" — os que vivem da conta</strong>. E "eles" não estão no seu grupo de WhatsApp. Estão no Congresso, nos tribunais, nos cartórios, nas diretorias de estatais. E votam juntos.</div></div>
+                    <div class="card"><div class="icon">🎭</div><h3>O teatro</h3><p>Enquanto você briga no WhatsApp, 349 deputados de ambos os lados votam juntos pelo Fundão.</p></div>
+                    <div class="card"><div class="icon">🪞</div><h3>O espelho</h3><p>78% dos brasileiros acham que o país está no rumo errado — independentemente de quem apoiam.</p></div>
+                    <div class="card"><div class="icon">🧩</div><h3>A engenharia</h3><p>Raiva = engajamento. O algoritmo não quer informar — quer inflamar. Você é o produto.</p></div>
+                    <div class="card"><div class="icon">🔓</div><h3>A verdade</h3><p>Existe "nós" (pagamos a conta) e "eles" (vivem da conta). E "eles" votam juntos.</p></div>
                 </div>
-                <div class="big-alert"><span class="alert-icon">⚡</span><div><strong>Desmonte a ilusão.</strong> O trabalhador paulista não é inimigo do trabalhador nordestino. O eleitor de direita não é inimigo do eleitor de esquerda. Ambos são vítimas do mesmo sistema que suga 33% do PIB e devolve migalhas em serviços públicos. Enquanto eles estiverem brigando entre si, o Congresso segue votando o próprio aumento salarial em paz.</div></div>
+                <div class="big-alert"><span class="alert-icon">⚡</span><div>O paulista não é inimigo do nordestino. Direita e esquerda são vítimas do mesmo sistema. Enquanto brigarem, o Congresso vota o próprio aumento em paz.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- O POVO -->
-        <section id="povo-pt">
+    <!-- ==================== ABA O POVO ==================== -->
+    <div class="tab-content" id="tab-povo">
+        <section>
             <div class="container">
                 <span class="section-label label-blue">PSICOLOGIA DAS MASSAS</span>
                 <h2>O povo nem sempre está certo — e o populismo usou isso contra você</h2>
-                <p class="subtitle">A democracia não é a ditadura da maioria. É um sistema que exige informação. Quando o povo é intoxicado por populismo, ele elege o próprio algoz — e aplaude.</p>
+                <p class="subtitle">Quando o povo é intoxicado por populismo, ele elege o próprio algoz — e aplaude.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🧠</div><h3>O viés do presente</h3><p style="font-size:0.9rem; color:var(--text2);">O cérebro humano prefere <strong>prazer imediato</strong> a ganho futuro. Populistas exploram isso oferecendo auxílio, aumento salarial, subsídio — tudo para agora. A conta vem depois, com inflação e imposto. E aí o mesmo povo reclama do governo seguinte.</p><div class="detail"><span class="tagline">Exemplo real</span>Em 2014, o governo Dilma segurou a gasolina e a energia artificialmente. O povo aplaudiu. Em 2015, a conta veio: inflação de 10,7% e recessão. O populismo é um empréstimo que o povo toma de si mesmo — com juros altíssimos.</div></div>
-                    <div class="card"><div class="icon">🎭</div><h3>O populismo que quebrou o futuro</h3><p style="font-size:0.9rem; color:var(--text2);">Desde 2006, o Brasil gasta mais do que arrecada. A dívida bruta saltou de <strong>R$ 1,3 tri (2006)</strong> para <strong>R$ 8,8 tri (2024)</strong>. Cada governo prometeu "investir no social" e entregou rombo. O resultado: juros altos, inflação, perda de poder de compra.</p><div class="detail"><span class="tagline">O ciclo</span>O político promete fácil → o povo elege → o governo gasta o que não tem → o Banco Central sobe os juros → o crédito some → o pobre paga a conta. Esse ciclo se repete há 20 anos. E o povo continua votando em quem promete mais.</div></div>
-                    <div class="card"><div class="icon">📉</div><h3>A maioria pode estar errada</h3><p style="font-size:0.9rem; color:var(--text2);">Pesquisas mostram que <strong>70% dos brasileiros</strong> não sabem o que é a taxa Selic. <strong>60%</strong> não sabem quanto pagam de imposto. Uma população desinformada é presa fácil para quem oferece pão e circo — e a história mostra que isso nunca termina bem.</p><div class="detail"><span class="tagline">Na prática</span>A Alemanha tem educação fiscal obrigatória desde o ensino médio. O cidadão aprende a ler orçamento público. Resultado: carga tributária similar à do Brasil (37%), mas serviços públicos de qualidade. A diferença? O povo sabe cobrar.</div></div>
+                    <div class="card"><div class="icon">🧠</div><h3>Viés do presente</h3><p>Cérebro prefere prazer imediato. Populistas oferecem auxílio agora, a conta vem depois com inflação.</p><div class="detail">Em 2014, Dilma segurou gasolina. Povo aplaudiu. 2015: inflação de 10,7% e recessão.</div></div>
+                    <div class="card"><div class="icon">🎭</div><h3>O ciclo populista</h3><p>Dívida bruta saltou de R$ 1,3 tri (2006) para R$ 8,8 tri (2024).</p><div class="detail">Promete → gasta → juros sobem → crédito some → pobre paga. Repete há 20 anos.</div></div>
+                    <div class="card"><div class="icon">📉</div><h3>Maioria desinformada</h3><p>70% não sabem o que é Selic. 60% não sabem quanto pagam de imposto.</p><div class="detail">Alemanha tem educação fiscal obrigatória. Carga similar, serviços de qualidade.</div></div>
                 </div>
-                <div class="info-box"><span class="info-icon">⚡</span><div><strong>A fábrica de populismo não fecha.</strong> O Congresso aprovou em 2023 o "orçamento secreto turbinado" enquanto discursava sobre responsabilidade fiscal. Em 2024, reajustou o próprio salário. A diferença entre direita e esquerda no Brasil é só o símbolo na bandeira. O método é o mesmo: prometer para a massa, cobrar do contribuinte, proteger a casta.</div></div>
+                <div class="info-box"><span class="info-icon">⚡</span><div>A fábrica de populismo não fecha. Direita e esquerda: mesmo método — prometer para a massa, cobrar do contribuinte, proteger a casta.</div></div>
             </div>
         </section>
+    </div>
 
-        <!-- PLANO NACIONAL -->
-        <section id="plano-pt" style="background: var(--surface);">
+    <!-- ==================== ABA PLANO ==================== -->
+    <div class="tab-content" id="tab-plano">
+        <section>
             <div class="container">
                 <span class="section-label label-green">PLANO DE LONGO PRAZO</span>
                 <h2>O que funcionaria de fato (com base nos dados)</h2>
-                <p class="subtitle">Medidas técnicas, sem ideologia, que qualquer país sério adotaria.</p>
-                <div class="plan-card"><h4>1. Reforma Administrativa com corte na casta</h4><p style="font-size:0.9rem; color:var(--text2);">O Brasil gasta <strong>13% do PIB com funcionalismo público</strong> (média da OCDE: 9%). É preciso:<br>• Fim de supersalários: teto constitucional de <strong>R$ 41 mil</strong> para todos os poderes, sem penduricalhos.<br>• Avaliação de desempenho com demissão por ineficiência comprovada.<br>• Fim de férias de 60 dias para juízes e promotores.<br><strong>Economia estimada: R$ 80 bilhões/ano.</strong></p></div>
-                <div class="plan-card"><h4>2. Autonomia financeira dos estados produtivos</h4><p style="font-size:0.9rem; color:var(--text2);">Estados que geram superávit devem ficar com <strong>70% do que produzem</strong>, não 50%.<br>• Redução gradual das transferências obrigatórias para estados com mais de 10 anos de déficit.<br><strong>Impacto: R$ 120 bilhões/ano realocados para infraestrutura produtiva.</strong></p></div>
-                <div class="plan-card"><h4>3. Reforma Tributária Regressiva Zero</h4><p style="font-size:0.9rem; color:var(--text2);">• Isenção total de impostos federais sobre itens da cesta básica.<br>• Tributação progressiva sobre dividendos acima de R$ 500 mil/ano.<br>• Fim da isenção de IR sobre lucros e dividendos.<br><strong>Arrecadação adicional: R$ 70 bilhões/ano.</strong></p></div>
-                <div class="plan-card"><h4>4. Fusão de municípios inviáveis</h4><p style="font-size:0.9rem; color:var(--text2);">Cidades com menos de 5 mil habitantes e menos de 10% de receita própria devem ser incorporadas a municípios vizinhos.<br><strong>Economia: R$ 15 bilhões/ano.</strong></p></div>
-                <div class="plan-card"><h4>5. Fim do Fundo Eleitoral e do orçamento secreto</h4><p style="font-size:0.9rem; color:var(--text2);">• Fim do Fundão: <strong>R$ 5,7 bilhões/ano</strong> economizados.<br>• Fim das emendas de relator e impositivas sem critério técnico.<br><strong>Economia: R$ 70 bilhões/ano redirecionados para saúde e educação.</strong></p></div>
+                <p class="subtitle">Medidas técnicas, sem ideologia.</p>
+                <div class="plan-card"><h4>1. Reforma Administrativa</h4><p style="color:var(--text2);">Fim de supersalários, avaliação de desempenho, demissão por ineficiência. <strong>Economia: R$ 80 bi/ano.</strong></p></div>
+                <div class="plan-card"><h4>2. Autonomia Financeira dos Estados</h4><p style="color:var(--text2);">Estados produtivos ficam com 70% do que geram. <strong>Impacto: R$ 120 bi/ano.</strong></p></div>
+                <div class="plan-card"><h4>3. Reforma Tributária Justa</h4><p style="color:var(--text2);">Isenção na cesta básica, taxação de dividendos. <strong>Receita adicional: R$ 70 bi/ano.</strong></p></div>
+                <div class="plan-card"><h4>4. Fusão de Municípios</h4><p style="color:var(--text2);">Cidades com menos de 5 mil habitantes incorporadas. <strong>Economia: R$ 15 bi/ano.</strong></p></div>
+                <div class="plan-card"><h4>5. Fim do Fundão</h4><p style="color:var(--text2);">Fim do fundo eleitoral e emendas sem critério. <strong>Economia: R$ 70 bi/ano.</strong></p></div>
             </div>
         </section>
+    </div>
 
-        <!-- REGRAS -->
-        <section id="regras-pt">
+    <!-- ==================== ABA REGRAS ==================== -->
+    <div class="tab-content" id="tab-regras">
+        <section>
             <div class="container">
                 <span class="section-label label-red">REGRAS RÍGIDAS</span>
                 <h2>Trava constitucional para políticos</h2>
-                <p class="subtitle">Medidas que impediriam o saque ao erário, independentemente de quem esteja no poder.</p>
+                <p class="subtitle">Medidas que impediriam o saque ao erário.</p>
                 <div class="grid">
-                    <div class="card"><div class="icon">🔒</div><h3>Mandato de 8 anos, sem reeleição</h3><div class="detail" style="margin-top:10px;"><span class="tagline">Por quê</span>Político em campanha permanente governa para a próxima eleição. Mandato único de <strong>8 anos para presidente, governador e prefeito</strong>.</div></div>
-                    <div class="card"><div class="icon">📊</div><h3>Meta fiscal com cadeia</h3><div class="detail" style="margin-top:10px;"><span class="tagline">Por quê</span>Estourar meta fiscal sem calamidade comprovada vira <strong>crime de responsabilidade</strong>. Perda de mandato e inelegibilidade por 15 anos.</div></div>
-                    <div class="card"><div class="icon">🔍</div><h3>Ficha limpa automática</h3><div class="detail" style="margin-top:10px;"><span class="tagline">Por quê</span><strong>Condenação em segunda instância = inelegibilidade imediata</strong>. Sem recurso ao STF para manter candidatura.</div></div>
-                    <div class="card"><div class="icon">🗳️</div><h3>Voto distrital puro</h3><div class="detail" style="margin-top:10px;"><span class="tagline">Por quê</span>Fim do voto proporcional. Cada região elege <strong>um deputado</strong>. O eleitor sabe quem cobrar.</div></div>
+                    <div class="card"><div class="icon">🔒</div><h3>Mandato de 8 anos</h3><div class="detail">Sem reeleição. Foco em entregar resultado, não campanha.</div></div>
+                    <div class="card"><div class="icon">📊</div><h3>Meta fiscal com cadeia</h3><div class="detail">Estourou sem calamidade = crime de responsabilidade. Inelegível por 15 anos.</div></div>
+                    <div class="card"><div class="icon">🔍</div><h3>Ficha limpa automática</h3><div class="detail">Condenação em 2ª instância = inelegibilidade imediata.</div></div>
+                    <div class="card"><div class="icon">🗳️</div><h3>Voto distrital puro</h3><div class="detail">Um deputado por região. Eleitor sabe quem cobrar.</div></div>
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- SEM REVOLUÇÃO -->
-        <section id="sem-revolucao-pt" style="background: var(--surface);">
+    <!-- ==================== ABA MUDAR ==================== -->
+    <div class="tab-content" id="tab-mudar">
+        <section>
             <div class="container">
                 <span class="section-label label-blue">PRAGMATISMO</span>
                 <h2>Mudar o sistema não é revolução. É mudar as regras do jogo.</h2>
-                <p class="subtitle">Toda vez que alguém fala em cortar privilégios ou tornar o Estado eficiente, aparece um gritando "comunismo" ou "golpe". Isso é cortina de fumaça.</p>
-                <div class="info-box"><span class="info-icon">🧠</span><div><strong>O que é uma revolução?</strong> É a derrubada violenta de um regime para impor outro. O que estamos descrevendo aqui é o oposto: <strong>reforma institucional</strong>. Mudar leis, emendas constitucionais e regimentos internos — tudo dentro da democracia. Países como Suécia, Canadá e Nova Zelândia fizeram reformas profundas sem tanques na rua. Eles mudaram os incentivos.</div></div>
+                <p class="subtitle">Toda vez que alguém fala em cortar privilégios, gritam "comunismo" ou "golpe". É cortina de fumaça.</p>
+                <div class="info-box"><span class="info-icon">🧠</span><div><strong>Revolução?</strong> É derrubada violenta. O que propomos é <strong>reforma institucional</strong>. Suécia, Canadá e Nova Zelândia fizeram reformas profundas sem tanques. Mudaram os incentivos.</div></div>
                 <div class="grid">
-                    <div class="card"><div class="icon">🎯</div><h3>Incentivos, não ideologia</h3><p style="font-size:0.9rem; color:var(--text2);">O problema do Brasil não é capitalismo ou socialismo. É que as regras atuais <strong>premiam quem suga o Estado e punem quem produz</strong>. Deputado que gasta mal se reelege. Juiz que trabalha 4 dias por semana ganha supersalário. Empresário que sonega fica impune.</p><div class="detail"><span class="tagline">Exemplo simples</span>Se uma máquina de café cobrar R$ 10 por um espresso e R$ 1 por um pingado, ela vai vender mais espresso porque o incentivo está lá. Políticos funcionam igual. Se o voto premia quem distribui emenda, eles distribuirão emendas. <strong>Mude a recompensa, mude o comportamento.</strong></div></div>
-                    <div class="card"><div class="icon">🚫</div><h3>Isso não é comunismo. É gestão.</h3><p style="font-size:0.9rem; color:var(--text2);">Cortar supersalários, fundir municípios zumbis e taxar dividendos não tem nada a ver com socialismo. A <strong>Suíça</strong> taxa dividendos. A <strong>Dinamarca</strong> demite servidor incompetente. A <strong>Alemanha</strong> não tem fundão eleitoral. Nenhum desses países é comunista. São capitalistas que fizeram a lição de casa.</p><div class="detail"><span class="tagline">Na prática</span>O Brasil gasta <strong>33% do PIB em impostos</strong>. A média da América Latina é 23%. O problema não é "faltar dinheiro". É o dinheiro ser sugado por uma máquina ineficiente e por uma casta que não paga imposto sobre lucro.</div></div>
-                    <div class="card"><div class="icon">🔄</div><h3>A mudança é técnica, não emocional</h3><p style="font-size:0.9rem; color:var(--text2);">As 5 medidas do Plano Nacional acima não exigem fechar o Congresso, prender opositores ou cancelar eleições. Exigem <strong>votos</strong>. Exigem que a população entenda os incentivos e pressione. É um processo lento, chato, burocrático. Mas é o único que funciona sem quebrar tudo.</p><div class="detail"><span class="tagline">Lembrete</span>A Nova Zelândia passou de um dos países mais regulados do mundo para um dos mais livres em 10 anos — com votações no parlamento, não com fuzil. O que faltou lá foi histeria ideológica. O que sobrou foi pragmatismo.</div></div>
+                    <div class="card"><div class="icon">🎯</div><h3>Incentivos, não ideologia</h3><p>Se uma máquina de café cobra R$ 10 por espresso e R$ 1 por pingado, venderá mais espresso. Políticos são iguais. Se o voto premia quem distribui emenda, distribuirão emendas. <strong>Mude a recompensa, mude o comportamento.</strong></p></div>
+                    <div class="card"><div class="icon">🚫</div><h3>Não é comunismo. É gestão.</h3><p>Suíça taxa dividendos. Dinamarca demite servidor ruim. Alemanha não tem fundão. Todos capitalistas que fizeram a lição de casa.</p></div>
+                    <div class="card"><div class="icon">🔄</div><h3>Mudança técnica</h3><p>Nova Zelândia reformou tudo em 10 anos com votações no parlamento, não com fuzil. O que faltou foi histeria. O que sobrou foi pragmatismo.</p></div>
                 </div>
-                <div class="big-alert"><span class="alert-icon">⚡</span><div><strong>Não caia na armadilha.</strong> Toda vez que alguém propõe cortar privilégio, o sistema grita "é o fim da democracia" ou "é comunismo". Isso é autodefesa. O parasita sempre chama o remédio de veneno. As ideias aqui não têm bandeira. Têm lógica. E a lógica não precisa de revolução — só precisa ser aplicada.</div></div>
+                <div class="big-alert"><span class="alert-icon">⚡</span><div><strong>Não caia na armadilha.</strong> Quando gritam "comunismo" contra uma reforma, é o parasita chamando o remédio de veneno. As ideias aqui não têm bandeira. Têm lógica.</div></div>
             </div>
         </section>
-
     </div>
 
-    <!-- ==================== INGLÊS ==================== -->
-    <div class="lang-content" id="content-en">
-
-        <section class="hero"><div class="container"><h1>The System Is Not Your Enemy.<br>It's Worse: It's <mark>Indifferent</mark>.</h1><p>While you fight over flags, 594 people decide how to burn R$ 4 trillion a year. They don't even know your name.</p></div></section>
-
-        <section id="impostos-en"><div class="container"><span class="section-label label-red">STRATEGIC HIGHLIGHT</span><h2>The government that most increased taxes and eroded your purchasing power</h2><p class="subtitle">Official data: IBGE, National Treasury, IRS. External shocks excluded: pandemic, war, commodities. Domestic decisions only.</p><table><thead><tr><th>Indicator</th><th>Temer (2016-2018)</th><th>Bolsonaro (2019-2022)</th><th>Lula 3 (2023-2025)</th></tr></thead><tbody><tr><td><strong>Tax Burden (% GDP)</strong></td><td>32.3% → 32.1%</td><td>31.8% → 32.9%</td><td class="drain">33.2% (2024) — HISTORIC RECORD</td></tr><tr><td><strong>New Taxes Created</strong></td><td>None</td><td>None</td><td class="drain">44% on international purchases; payroll re-taxation; ICMS subsidies tax</td></tr><tr><td><strong>Income Tax Brackets</strong></td><td>Frozen</td><td>Frozen for 4 years</td><td class="drain">Adjusted only up to 2 minimum wages. Middle class still frozen.</td></tr><tr><td><strong>Food Inflation</strong></td><td>-1.87% (2017)</td><td>+13.4% (2022)</td><td class="drain">+18% cumulative (Jan/23 to Feb/25)</td></tr><tr><td><strong>Total Revenue</strong></td><td>R$ 1.9T (2018)</td><td>R$ 3.2T (2022)</td><td class="drain">R$ 3.9T (2024) — RECORD</td></tr></tbody></table><div class="big-alert"><span class="alert-icon">📊</span><div><strong>Verdict:</strong> Lula 3 delivers record tax burden, highest food inflation, and created new taxes on popular consumption. No recent government has so aggressively squeezed the state's bite while purchasing power plummeted.</div></div></div></section>
-
-        <section id="sistema-en" style="background:var(--surface);"><div class="container"><span class="section-label label-red">THE REAL POWER</span><h2>Who really rules the country</h2><div class="grid"><div class="card"><div class="icon">🏛️</div><h3>513 Federal Deputies</h3><div class="number red">R$ 50B</div><div class="detail">Each controls R$ 97M in earmarks. 80% goes to electoral strongholds without technical criteria.</div></div><div class="card"><div class="icon">🪑</div><h3>81 Senators</h3><div class="number red">R$ 20B</div><div class="detail">Each has R$ 250M/year. Brazil has 8,500 halted public works, most due to mismanagement and corruption.</div></div><div class="card"><div class="icon">💸</div><h3>Electoral Fund</h3><div class="number red">R$ 5.7B</div><div class="detail">Politicians voted to give themselves R$ 5.7 billion in 2024. The largest electoral fund in the world.</div></div><div class="card"><div class="icon">📋</div><h3>Real Cost</h3><div class="number red">R$ 180K</div><div class="detail">A deputy costs R$ 180K/month — 127 minimum wages.</div></div></div></div></section>
-
-        <section id="votacoes-en"><div class="container"><span class="section-label label-orange">VOTES THAT WORSEN YOUR LIFE</span><h2>The deputies who vote against you</h2><div class="grid"><div class="card"><div class="icon">🗳️</div><h3>Electoral Fund Increase</h3><div class="number red">349 votes</div><div class="detail">68% of Congress voted in favor. Deputies from all political spectrums.</div><div class="vote-bar"><div class="pro" style="width:68%;">In Favor 68%</div><div class="contra" style="width:32%;">Against 32%</div></div></div><div class="card"><div class="icon">💼</div><h3>Judiciary Pay Raise</h3><div class="number red">R$ 1.7B</div><div class="detail">18% increase for judges. Ripple effect across states: R$ 3B/year.</div></div><div class="card"><div class="icon">🔇</div><h3>Party Debt Amnesty</h3><div class="number red">R$ 23B</div><div class="detail">Pardon of electoral fines approved by symbolic vote to hide names.</div></div></div></div></section>
-
-        <section id="terrasraras-en" style="background:var(--surface);"><div class="container"><span class="section-label label-gold">MINERAL SOVEREIGNTY</span><h2>Rare Earths: Brazil sitting on gold and begging for change</h2><div class="grid"><div class="card"><div class="icon">⛏️</div><h3>Brazilian Reserves</h3><div class="number gold">21M tons</div><div class="detail">17% of global reserves. Less than 1% of global production.</div></div><div class="card"><div class="icon">🔋</div><h3>Explosive Demand</h3><div class="number gold">+400%</div><div class="detail">Demand increase by 2040 (IEA). Essential for wind turbines, EV batteries, military equipment.</div></div><div class="card"><div class="icon">🇨🇳</div><h3>Chinese Dependence</h3><div class="number gold">70%</div><div class="detail">China controls 70% of the global market. In 2023, it threatened export restrictions to the US.</div></div></div><div class="plan-card gold"><h4>National Rare Earth Plan (5 Steps)</h4><p><strong>1. Full mapping</strong> of deposits in 2 years.<br><strong>2. Build the first national rare earth refinery.</strong><br><strong>3. Ban raw ore exports.</strong> Only processed oxides leave the country.<br><strong>4. Technology alliance</strong> with Japan, USA, South Korea.<br><strong>5. Sovereign Mineral Fund:</strong> 30% of revenue funds technical education and infrastructure.<br><strong>Estimated impact: R$ 40B/year in exports and 200K direct jobs in 10 years.</strong></p></div></div></section>
-
-        <section id="noses-en" style="background:var(--surface);"><div class="container"><span class="section-label label-blue">THE GREAT ILLUSION</span><h2>"Us vs Them" doesn't exist. It's a distraction factory.</h2><div class="grid"><div class="card"><div class="icon">🎭</div><h3>The Division Theater</h3><p>While you fight on WhatsApp, 349 deputies from both sides vote together to increase the Electoral Fund.</p></div><div class="card"><div class="icon">🪞</div><h3>The Broken Mirror</h3><p>78% of Brazilians think the country is on the wrong track — regardless of who they support.</p></div><div class="card"><div class="icon">🔓</div><h3>The Naked Truth</h3><p>There is "us" — those who pay the bill — and "them" — those who live off the bill. And "they" vote together.</p></div></div></div></section>
-
-        <section id="plano-en" style="background:var(--surface);"><div class="container"><span class="section-label label-green">LONG-TERM PLAN</span><h2>What would actually work</h2><div class="plan-card"><h4>1. Administrative Reform</h4><p>End supersalaries, performance evaluation, dismissal for inefficiency. Savings: R$ 80B/year.</p></div><div class="plan-card"><h4>2. State Financial Autonomy</h4><p>Productive states keep 70% of what they generate. Impact: R$ 120B/year.</p></div><div class="plan-card"><h4>3. Fair Tax Reform</h4><p>Zero tax on basic food basket, progressive dividend taxation. Additional revenue: R$ 70B/year.</p></div></div></section>
-
-    </div>
-
-    <!-- ==================== JAPONÊS ==================== -->
-    <div class="lang-content" id="content-jp">
-
-        <section class="hero"><div class="container"><h1>システムは敵ではない。<br>もっと悪い：<mark>無関心</mark>なのだ。</h1><p>あなたが旗の色で争っている間、594人が年間4兆レアルの使い道を決めている。彼らはあなたの名前すら知らない。</p></div></section>
-
-        <section id="impostos-jp"><div class="container"><span class="section-label label-red">戦略的ハイライト</span><h2>最も増税し、購買力を損なった政権</h2><p class="subtitle">IBGE、財務省、国税庁の公式データ。外的要因を除外。</p><table><thead><tr><th>指標</th><th>テメル政権</th><th>ボルソナロ政権</th><th>ルーラ3期</th></tr></thead><tbody><tr><td><strong>税負担（対GDP比）</strong></td><td>32.3% → 32.1%</td><td>31.8% → 32.9%</td><td class="drain">33.2%（2024年）— 過去最高</td></tr><tr><td><strong>新設された税金</strong></td><td>なし</td><td>なし</td><td class="drain">国際購入に対する44%課税、給与税再課税</td></tr><tr><td><strong>食品インフレ</strong></td><td>-1.87%（2017年）</td><td>+13.4%（2022年）</td><td class="drain">+18%累積（2023年1月～2025年2月）</td></tr></tbody></table><div class="big-alert"><span class="alert-icon">📊</span><div><strong>評決：</strong> ルーラ3期は過去最高の税負担、最高の食品インフレを記録し、大衆消費に新税を創設した。</div></div></div></section>
-
-        <section id="sistema-jp" style="background:var(--surface);"><div class="container"><span class="section-label label-red">真の権力</span><h2>誰が本当に国を支配しているのか</h2><div class="grid"><div class="card"><div class="icon">🏛️</div><h3>513人の連邦議員</h3><div class="number red">R$ 500億</div><div class="detail">各議員は年間9700万レアルの予算を裁量で使える。80%は選挙区に流れる。</div></div><div class="card"><div class="icon">🪑</div><h3>81人の上院議員</h3><div class="number red">R$ 200億</div><div class="detail">各上院議員は年間2.5億レアル。ブラジルには8500の未完成公共事業がある。</div></div><div class="card"><div class="icon">💸</div><h3>選挙資金</h3><div class="number red">R$ 57億</div><div class="detail">政治家たちは2024年に自分たちに57億レアルを与える法案に賛成した。</div></div></div></div></section>
-
-        <section id="votacoes-jp"><div class="container"><span class="section-label label-orange">あなたの生活を悪化させる投票</span><h2>あなたに反対票を投じる議員たち</h2><div class="grid"><div class="card"><div class="icon">🗳️</div><h3>選挙資金増額</h3><div class="number red">349票</div><div class="detail">国会の68%が賛成。あらゆる政治勢力の議員が含まれる。</div><div class="vote-bar"><div class="pro" style="width:68%;">賛成 68%</div><div class="contra" style="width:32%;">反対 32%</div></div></div><div class="card"><div class="icon">💼</div><h3>司法官給与引上げ</h3><div class="number red">R$ 17億</div><div class="detail">裁判官の18%昇給。州全体への波及効果：年間30億レアル。</div></div></div></div></section>
-
-        <section id="terrasraras-jp" style="background:var(--surface);"><div class="container"><span class="section-label label-gold">鉱物主権</span><h2>レアアース：金の上に座りながら施しを乞うブラジル</h2><div class="grid"><div class="card"><div class="icon">⛏️</div><h3>ブラジルの埋蔵量</h3><div class="number gold">2100万トン</div><div class="detail">世界の埋蔵量の17%。生産量は1%未満。</div></div><div class="card"><div class="icon">🔋</div><h3>爆発的需要</h3><div class="number gold">+400%</div><div class="detail">2040年までの需要増加（IEA）。風力タービン、EVバッテリー、軍事機器に不可欠。</div></div><div class="card"><div class="icon">🇨🇳</div><h3>中国依存</h3><div class="number gold">70%</div><div class="detail">中国が世界市場の70%を支配。2023年に米国への輸出制限を示唆。</div></div></div><div class="plan-card gold"><h4>国家レアアース計画（5段階）</h4><p><strong>1. 完全な鉱床マッピング</strong>（2年以内）<br><strong>2. 初の国家精製所建設。</strong><br><strong>3. 原鉱輸出禁止。</strong>加工酸化物のみ輸出。<br><strong>4. 日米韓との技術提携。</strong><br><strong>5. 鉱物主権基金：</strong>収益の30%を技術教育とインフラに。<br><strong>推定効果：10年で年間400億レアルの輸出と20万人の雇用。</strong></p></div></div></section>
-
-        <section id="noses-jp" style="background:var(--surface);"><div class="container"><span class="section-label label-blue">大いなる幻想</span><h2>「我々対彼ら」は存在しない。それは目隠し工場だ。</h2><div class="grid"><div class="card"><div class="icon">🎭</div><h3>分断の演劇</h3><p>あなたがWhatsAppで争っている間、349人の与野党議員が選挙資金増額に賛成票を投じている。</p></div><div class="card"><div class="icon">🔓</div><h3>裸の真実</h3><p>「我々」—請求書を支払う者—と「彼ら」—請求書で生きる者—が存在する。そして「彼ら」は一緒に投票する。</p></div></div></div></section>
-
-    </div>
-
-    <!-- CTA FINAL -->
+    <!-- CTA Final -->
     <section>
         <div class="container">
             <div class="cta">
-                <h3>🧠 O sistema não vai se reformar sozinho. | The system won't reform itself. | システムは自ら改革しない。</h3>
-                <p>Compartilhe este mapa com alguém que ainda acredita que o problema é o "outro lado". | Share this map with someone who still believes the problem is the "other side". | この地図を、問題は「あちら側」だとまだ信じている人と共有してください。</p>
-                <a href="#impostos-pt" class="btn">REVISAR O MAPA ↑</a>
+                <h3>🧠 O sistema não vai se reformar sozinho.</h3>
+                <p>Compartilhe este mapa com alguém que ainda acredita que o problema é o "outro lado".</p>
+                <button class="btn" onclick="document.querySelector('[data-tab=tab-inicio]').click(); window.scrollTo({top:0,behavior:'smooth'});">REVISAR O MAPA ↑</button>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>Fontes / Sources / 出典: IBGE, Tesouro Nacional, TCU, Transparência Brasil, Impostômetro (ACSP), Firjan, CLP, Câmara dos Deputados, Datafolha, IEA, USGS.</p>
-            <p>Nenhum partido, político ou empresa financia esta página. | No party, politician or company funds this page. | いかなる政党・政治家・企業もこのページに資金提供していません。</p>
+            <p>Fontes: IBGE, Tesouro Nacional, TCU, Transparência Brasil, Impostômetro (ACSP), Firjan, CLP, Câmara dos Deputados, Datafolha, IEA, USGS.</p>
+            <p>Nenhum partido, político ou empresa financia esta página.</p>
         </div>
     </footer>
 
     <script>
-        function switchLang(lang) {
-            // Esconde todos os conteúdos
-            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
-            // Mostra o conteúdo do idioma selecionado
-            const target = document.getElementById('content-' + lang);
-            if (target) target.classList.add('active');
-
-            // Atualiza botões de idioma
-            document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
-            const btn = document.getElementById('btn-' + lang);
-            if (btn) btn.classList.add('active');
-
-            // Atualiza textos dos links de navegação
-            document.querySelectorAll('.nav-links a').forEach(a => {
-                const text = a.getAttribute('data-' + lang);
-                if (text) a.textContent = text;
-            });
-
-            // Atualiza hrefs dos links para apontar para as âncoras do idioma correto
-            document.querySelectorAll('.nav-links a').forEach(a => {
-                const href = a.getAttribute('href');
-                if (href && href.includes('-pt')) {
-                    a.setAttribute('href', href.replace('-pt', '-' + lang));
-                } else if (href && href.includes('-en')) {
-                    a.setAttribute('href', href.replace('-en', '-' + lang));
-                } else if (href && href.includes('-jp')) {
-                    a.setAttribute('href', href.replace('-jp', '-' + lang));
+        // Sistema de abas
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                // Desativa todos
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove(
+                    'active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove(
+                    'active'));
+                // Ativa o selecionado
+                this.classList.add('active');
+                const target = document.getElementById(tabId);
+                if (target) {
+                    target.classList.add('active');
+                    // Força reanimação
+                    target.style.animation = 'none';
+                    target.offsetHeight; // trigger reflow
+                    target.style.animation = '';
                 }
+                // Scroll para o topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
-            // Atualiza o href do botão CTA
-            const ctaBtn = document.querySelector('.btn');
-            if (ctaBtn) {
-                ctaBtn.setAttribute('href', '#impostos-' + lang);
-            }
-
-            // Scroll para o topo suavemente
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Inicializa os links com os hrefs corretos para PT
-        document.addEventListener('DOMContentLoaded', function() {
-            switchLang('pt');
         });
     </script>
 
