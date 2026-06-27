@@ -71,6 +71,7 @@
         .label-red { background: rgba(229,57,53,0.15); color: #ff6b6b; }
         .label-orange { background: rgba(255,109,0,0.15); color: #ff9100; }
         .label-green { background: rgba(0,200,83,0.15); color: #00e676; }
+        .label-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
         h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
         .subtitle { color: var(--text2); margin-bottom: 36px; }
 
@@ -107,18 +108,21 @@
         }
         .big-alert .alert-icon { font-size: 1.8rem; }
 
+        .info-box {
+            background: rgba(59,130,246,0.08); border: 1px solid #1a3a6a;
+            border-radius: var(--radius); padding: 22px; margin: 20px 0;
+            font-size: 0.95rem; color: #aaccff;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .info-box .info-icon { font-size: 1.8rem; }
+
         table {
             width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 15px 0;
         }
         th { text-align: left; padding: 10px 14px; background: var(--surface2); font-weight: 600; color: #ccc; }
         td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text2); }
-        .drain { color: #ff5252; font-weight: 700; }
-        .neutral { color: #ffb300; }
 
-        .vote-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; }
-        .vote-table th, .vote-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-        .vote-table th { background: var(--surface2); color: #ccc; }
-        .vote-bar { display: flex; height: 20px; border-radius: 4px; overflow: hidden; background: var(--surface2); }
+        .vote-bar { display: flex; height: 20px; border-radius: 4px; overflow: hidden; background: var(--surface2); margin-top: 10px; }
         .vote-bar .pro { background: #c62828; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; }
         .vote-bar .contra { background: #1b5e20; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff; }
 
@@ -127,18 +131,6 @@
             padding: 24px; margin-bottom: 16px;
         }
         .plan-card h4 { font-weight: 800; color: #00e676; margin-bottom: 8px; }
-
-        .step {
-            display: flex; gap: 16px; align-items: flex-start;
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 20px; margin-bottom: 14px;
-        }
-        .step-num {
-            font-size: 2rem; font-weight: 900; color: var(--red-glow);
-            line-height: 1; min-width: 40px;
-        }
-        .step-text h4 { font-weight: 700; margin-bottom: 5px; }
-        .step-text p { color: var(--text2); font-size: 0.9rem; }
 
         .cta {
             background: linear-gradient(135deg, #150000, #080810);
@@ -160,7 +152,6 @@
         }
 
         @media (max-width: 600px) {
-            .step { flex-direction: column; }
             .nav-links { gap: 8px; font-size: 0.75rem; }
         }
     </style>
@@ -177,6 +168,7 @@
             <li><a href="#cidades">Cidades</a></li>
             <li><a href="#plano">Plano Nacional</a></li>
             <li><a href="#regras">Regras</a></li>
+            <li><a href="#sem-revolucao">Mudar sem Revolução</a></li>
         </ul>
     </div>
 </nav>
@@ -260,14 +252,14 @@
         <div class="grid">
             <div class="card">
                 <div class="icon">🗳️</div>
-                <h3>Aumento do Fundão Eleitoral (2021 e 2024)</h3>
+                <h3>Aumento do Fundão Eleitoral</h3>
                 <div class="number red">349 votos</div>
-                <p style="font-size:0.85rem; color:var(--text2);">Deputados que aprovaram R$ 5,7 bi para campanhas.</p>
+                <p style="font-size:0.85rem; color:var(--text2);">Deputados que aprovaram R$ 5,7 bi.</p>
                 <div class="detail">
                     <span class="tagline">Quem votou a favor</span>
-                    <strong>68% da Câmara</strong> votou para aumentar o Fundão de R$ 2 bi para R$ 5,7 bi. Entre os que votaram "sim", estavam <strong>deputados de todos os espectros políticos</strong>, inclusive os que se dizem "contra gastos públicos". A justificativa oficial: "democracia custa caro".
+                    <strong>68% da Câmara</strong> votou para aumentar o Fundão de R$ 2 bi para R$ 5,7 bi. Entre os que votaram "sim", estavam <strong>deputados de todos os espectros políticos</strong>, inclusive os que se dizem "contra gastos públicos".
                 </div>
-                <div class="vote-bar" style="margin-top:10px;">
+                <div class="vote-bar">
                     <div class="pro" style="width:68%;">A favor 68%</div>
                     <div class="contra" style="width:32%;">Contra 32%</div>
                 </div>
@@ -275,34 +267,34 @@
 
             <div class="card">
                 <div class="icon">💼</div>
-                <h3>Reajuste de Salários do Judiciário e MP (2022)</h3>
+                <h3>Reajuste do Judiciário e MP</h3>
                 <div class="number red">R$ 1,7 bi</div>
                 <p style="font-size:0.85rem; color:var(--text2);">Impacto anual do aumento aprovado.</p>
                 <div class="detail">
                     <span class="tagline">Quem votou a favor</span>
-                    A Câmara aprovou por <strong>esmagadora maioria</strong> o reajuste de 18% para juízes e procuradores, elevando o teto para <strong>R$ 41 mil</strong>. O efeito cascata nos estados custa <strong>R$ 3 bilhões/ano</strong>. Muitos deputados que votaram "sim" depois posaram de defensores da austeridade.
+                    A Câmara aprovou por <strong>esmagadora maioria</strong> o reajuste de 18% para juízes e procuradores, elevando o teto para <strong>R$ 41 mil</strong>. O efeito cascata nos estados custa <strong>R$ 3 bilhões/ano</strong>.
                 </div>
             </div>
 
             <div class="card">
                 <div class="icon">🏖️</div>
-                <h3>Férias de 60 dias para juízes (mantidas anualmente)</h3>
+                <h3>Férias de 60 dias para juízes</h3>
                 <div class="number red">60 dias</div>
                 <p style="font-size:0.85rem; color:var(--text2);">Férias anuais + recesso forense.</p>
                 <div class="detail">
                     <span class="tagline">Quem impede a mudança</span>
-                    Projetos para limitar férias a 30 dias nunca avançam. A justificativa é "independência do Judiciário". Na prática, o Congresso não vota por <strong>medo de retaliação judicial</strong> e porque muitos deputados são ex-juízes ou têm parentes na magistratura.
+                    Projetos para limitar férias a 30 dias nunca avançam. A justificativa é "independência do Judiciário". Na prática, o Congresso não vota por <strong>medo de retaliação judicial</strong>.
                 </div>
             </div>
 
             <div class="card">
                 <div class="icon">🔇</div>
-                <h3>Anistia a Dívidas de Partidos (2024)</h3>
+                <h3>Anistia a Dívidas de Partidos</h3>
                 <div class="number red">R$ 23 bi</div>
                 <p style="font-size:0.85rem; color:var(--text2);">Perdão de multas eleitorais e previdenciárias.</p>
                 <div class="detail">
                     <span class="tagline">Quem votou a favor</span>
-                    Em 2024, o Congresso aprovou a <strong>anistia de R$ 23 bilhões</strong> em dívidas de partidos políticos. A votação foi <strong>simbólica</strong> (sem registro nominal) para esconder os nomes. Isso inclui perdão de multas por não usar verba de forma correta e por descumprir cotas.
+                    Em 2024, o Congresso aprovou a <strong>anistia de R$ 23 bilhões</strong> em dívidas de partidos políticos. A votação foi <strong>simbólica</strong> (sem registro nominal) para esconder os nomes.
                 </div>
             </div>
 
@@ -313,7 +305,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">Dos inquéritos contra deputados são arquivados.</p>
                 <div class="detail">
                     <span class="tagline">Por que isso nunca muda</span>
-                    Projetos para reduzir o foro privilegiado ou facilitar a cassação de mandato por quebra de decoro são <strong>sistematicamente engavetados</strong> pela Mesa Diretora. Deputados investigados votam para manter a própria proteção.
+                    Projetos para reduzir o foro privilegiado ou facilitar a cassação de mandato por quebra de decoro são <strong>sistematicamente engavetados</strong> pela Mesa Diretora.
                 </div>
             </div>
 
@@ -324,7 +316,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">Projetos de lei inúteis aprovados por ano.</p>
                 <div class="detail">
                     <span class="tagline">Exemplos reais</span>
-                    A Câmara gasta horas votando projetos como: <strong>Dia Nacional do Brega</strong>, <strong>Dia do Tecladista</strong>, <strong>Semana da Conciliação</strong> (que já existe). Cada sessão custa <strong>R$ 200 mil</strong> aos cofres públicos. Enquanto isso, reformas estruturais esperam décadas.
+                    A Câmara gasta horas votando projetos como: <strong>Dia Nacional do Brega</strong>, <strong>Dia do Tecladista</strong>, <strong>Semana da Conciliação</strong>. Cada sessão custa <strong>R$ 200 mil</strong> aos cofres públicos.
                 </div>
             </div>
         </div>
@@ -332,7 +324,7 @@
         <div class="big-alert">
             <span class="alert-icon">📊</span>
             <div>
-                <strong>O padrão é claro.</strong> Quando a votação é para aumentar salário, fundo eleitoral ou anistiar dívida de partido, a aprovação é <strong>rápida e com ampla maioria</strong>. Quando é para cortar privilégios, reduzir imposto ou punir corrupção, o projeto <strong>some na gaveta</strong>. Não é ideologia — é sobrevivência política.
+                <strong>O padrão é claro.</strong> Quando a votação é para aumentar salário, fundo eleitoral ou anistiar dívida de partido, a aprovação é <strong>rápida e com ampla maioria</strong>. Quando é para cortar privilégios, reduzir imposto ou punir corrupção, o projeto <strong>some na gaveta</strong>.
             </div>
         </div>
     </div>
@@ -353,7 +345,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">PIB em 2024 (33% do Brasil).</p>
                 <div class="detail">
                     <span class="tagline">O que recebe de volta</span>
-                    SP gera <strong>33% do PIB nacional</strong>, mas recebe apenas <strong>18% das transferências federais</strong>. Cada paulista transfere em média <strong>R$ 3.200 por ano</strong> para outros estados via fundos constitucionais. O retorno em infraestrutura é mínimo.
+                    SP gera <strong>33% do PIB nacional</strong>, mas recebe apenas <strong>18% das transferências federais</strong>. Cada paulista transfere em média <strong>R$ 3.200 por ano</strong> para outros estados via fundos constitucionais.
                 </div>
             </div>
 
@@ -364,7 +356,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">dos municípios nordestinos dependem 90%+ de repasses.</p>
                 <div class="detail">
                     <span class="tagline">O paradoxo</span>
-                    O Nordeste tem <strong>27% da população</strong>, mas recebe <strong>35% das transferências federais</strong>. Mais de <strong>800 cidades nordestinas</strong> têm o FPM como única receita relevante. Não produzem, consomem repasses. O modelo perpetua a dependência.
+                    O Nordeste tem <strong>27% da população</strong>, mas recebe <strong>35% das transferências federais</strong>. Mais de <strong>800 cidades nordestinas</strong> têm o FPM como única receita relevante.
                 </div>
             </div>
 
@@ -372,10 +364,10 @@
                 <div class="icon">📉</div>
                 <h3>Norte — Riqueza natural, pobreza local</h3>
                 <div class="number orange">R$ 600</div>
-                <p style="font-size:0.85rem; color:var(--text2);">PIB per capita mensal no Pará (metade da média nacional).</p>
+                <p style="font-size:0.85rem; color:var(--text2);">PIB per capita mensal no Pará.</p>
                 <div class="detail">
                     <span class="tagline">O paradoxo</span>
-                    A região Norte exporta <strong>minério, energia e madeira</strong>, mas a riqueza não fica. O Pará tem a maior mina de ferro do mundo (Carajás) e um dos piores IDHs do Brasil. A Vale paga <strong>menos de 2% de imposto sobre o lucro</strong> via paraíso fiscal, enquanto o estado definha.
+                    O Pará exporta minério de ferro e tem um dos piores IDHs do país. A Vale paga <strong>menos de 2% de imposto sobre o lucro</strong> via paraíso fiscal.
                 </div>
             </div>
 
@@ -386,7 +378,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">Transferidos entre estados via fundos em 2024.</p>
                 <div class="detail">
                     <span class="tagline">Por que ninguém fala disso</span>
-                    Estados superavitários (SP, MG, RJ, RS, PR, SC) bancam os deficitários. Mas o sistema é mantido porque <strong>deputados do Norte/Nordeste votam em bloco</strong> para preservar os repasses. É uma troca: verba em troca de apoio político. O contribuinte do Sul/Sudeste paga a conta calado.
+                    Estados superavitários bancam os deficitários. O sistema é mantido porque <strong>deputados do Norte/Nordeste votam em bloco</strong> para preservar os repasses. Verba em troca de apoio político.
                 </div>
             </div>
         </div>
@@ -408,7 +400,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">cidades com menos de 5 mil habitantes.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    O Brasil tem <strong>mais de 1.200 municípios</strong> onde <strong>90% da receita</strong> vem do FPM. A prefeitura emprega metade da cidade, não há atividade econômica real. Cada um desses municípios custa <strong>R$ 8 milhões/ano</strong> só para manter a máquina administrativa.
+                    <strong>90% da receita</strong> vem do FPM. A prefeitura emprega metade da cidade, não há atividade econômica real. Cada um desses municípios custa <strong>R$ 8 milhões/ano</strong> só para manter a máquina administrativa.
                 </div>
             </div>
 
@@ -419,7 +411,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">dos empregos em cidades pequenas são públicos.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    Em cidades como <strong>Bom Jesus do Tocantins (PA)</strong>, a prefeitura emprega <strong>60% da população ativa</strong>. Não há fábrica, não há comércio forte, não há agroindústria. Só a máquina pública girando com dinheiro federal. Isso é insustentável.
+                    Em cidades como <strong>Bom Jesus do Tocantins (PA)</strong>, a prefeitura emprega <strong>60% da população ativa</strong>. Só a máquina pública girando com dinheiro federal.
                 </div>
             </div>
 
@@ -430,7 +422,7 @@
                 <p style="font-size:0.85rem; color:var(--text2);">obras federais paralisadas em 2025.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    São <strong>R$ 150 bilhões</strong> em obras inacabadas: creches, postos de saúde, estradas. O dinheiro foi liberado, a obra começou e parou. Motivo: má gestão, corrupção, empresa abandonou. Enquanto isso, novas emendas são liberadas para novas obras que também vão parar.
+                    São <strong>R$ 150 bilhões</strong> em obras inacabadas: creches, postos de saúde, estradas. O dinheiro foi liberado, a obra começou e parou. Enquanto isso, novas emendas são liberadas para novas obras que também vão parar.
                 </div>
             </div>
         </div>
@@ -461,7 +453,7 @@
             <p style="font-size:0.9rem; color:var(--text2);">
                 Estados que geram superávit devem ficar com <strong>70% do que produzem</strong>, não 50%.<br>
                 • Redução gradual das transferências obrigatórias para estados com mais de 10 anos de déficit.<br>
-                • Fundo de Desenvolvimento Regional com critérios de desempenho: só recebe quem apresenta contrapartida e resultado.<br>
+                • Fundo de Desenvolvimento Regional com critérios de desempenho.<br>
                 <strong>Impacto: R$ 120 bilhões/ano realocados para infraestrutura produtiva.</strong>
             </p>
         </div>
@@ -470,10 +462,10 @@
             <h4>3. Reforma Tributária Regressiva Zero</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
                 O pobre paga proporcionalmente mais imposto que o rico no Brasil.<br>
-                • Isenção total de impostos federais sobre itens da cesta básica (arroz, feijão, leite, carne, café, farinha, ovos).<br>
+                • Isenção total de impostos federais sobre itens da cesta básica.<br>
                 • Tributação progressiva sobre dividendos acima de R$ 500 mil/ano.<br>
-                • Fim da isenção de IR sobre lucros e dividendos (Brasil é um dos poucos países do mundo onde rico não paga IR sobre lucro de empresa).<br>
-                <strong>Arrecadação adicional: R$ 70 bilhões/ano, compensando desoneração do consumo.</strong>
+                • Fim da isenção de IR sobre lucros e dividendos.<br>
+                <strong>Arrecadação adicional: R$ 70 bilhões/ano.</strong>
             </p>
         </div>
 
@@ -481,19 +473,17 @@
             <h4>4. Fusão de municípios inviáveis</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
                 Cidades com menos de 5 mil habitantes e menos de 10% de receita própria devem ser incorporadas a municípios vizinhos.<br>
-                • Isso reduziria em <strong>R$ 15 bilhões/ano</strong> o custo administrativo.<br>
-                • As prefeituras incorporadas virariam distritos administrativos, mantendo serviços sem máquina inchada.<br>
-                <strong>Atingiria 1.200 municípios. Economia: R$ 15 bilhões/ano.</strong>
+                • Redução de <strong>R$ 15 bilhões/ano</strong> em custo administrativo.<br>
+                <strong>Atingiria 1.200 municípios.</strong>
             </p>
         </div>
 
         <div class="plan-card">
             <h4>5. Fim do Fundo Eleitoral e do orçamento secreto</h4>
             <p style="font-size:0.9rem; color:var(--text2);">
-                Dinheiro público não deve financiar campanha. Quem quiser se eleger que convença pessoas a doar (com teto e transparência).<br>
+                Dinheiro público não deve financiar campanha.<br>
                 • Fim do Fundão: <strong>R$ 5,7 bilhões/ano</strong> economizados.<br>
-                • Fim das emendas de relator (orçamento secreto) e impositivas sem critério técnico.<br>
-                • Todas as emendas devem passar por auditoria pública com nota técnica vinculante.<br>
+                • Fim das emendas de relator e impositivas sem critério técnico.<br>
                 <strong>Economia: R$ 70 bilhões/ano redirecionados para saúde e educação.</strong>
             </p>
         </div>
@@ -513,7 +503,7 @@
                 <h3>Mandato de 8 anos, sem reeleição</h3>
                 <div class="detail" style="margin-top: 10px;">
                     <span class="tagline">Por quê</span>
-                    Político em campanha permanente governa para a próxima eleição, não para o país. Mandato único de <strong>8 anos para presidente, governador e prefeito</strong>, sem possibilidade de reeleição.
+                    Político em campanha permanente governa para a próxima eleição. Mandato único de <strong>8 anos para presidente, governador e prefeito</strong>.
                 </div>
             </div>
 
@@ -540,8 +530,63 @@
                 <h3>Voto distrital puro</h3>
                 <div class="detail" style="margin-top: 10px;">
                     <span class="tagline">Por quê</span>
-                    Fim do voto proporcional. Cada região elege <strong>um deputado</strong>. O eleitor sabe quem cobrar. Acaba o deputado eleito com voto de legenda que ninguém conhece.
+                    Fim do voto proporcional. Cada região elege <strong>um deputado</strong>. O eleitor sabe quem cobrar.
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEM REVOLUÇÃO -->
+<section id="sem-revolucao">
+    <div class="container">
+        <span class="section-label label-blue">PRAGMATISMO</span>
+        <h2>Mudar o sistema não é revolução. É mudar as regras do jogo.</h2>
+        <p class="subtitle">Toda vez que alguém fala em cortar privilégios ou tornar o Estado eficiente, aparece um gritando "comunismo" ou "golpe". Isso é cortina de fumaça.</p>
+
+        <div class="info-box">
+            <span class="info-icon">🧠</span>
+            <div>
+                <strong>O que é uma revolução?</strong> É a derrubada violenta de um regime para impor outro. O que estamos descrevendo aqui é o oposto: <strong>reforma institucional</strong>. Mudar leis, emendas constitucionais e regimentos internos — tudo dentro da democracia. Países como Suécia, Canadá e Nova Zelândia fizeram reformas profundas sem tanques na rua. Eles mudaram os incentivos.
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🎯</div>
+                <h3>Incentivos, não ideologia</h3>
+                <p style="font-size:0.9rem; color:var(--text2);">O problema do Brasil não é capitalismo ou socialismo. É que as regras atuais <strong>premiam quem suga o Estado e punem quem produz</strong>. Deputado que gasta mal se reelege. Juiz que trabalha 4 dias por semana ganha supersalário. Empresário que sonega fica impune. Isso não tem ideologia — tem matemática.</p>
+                <div class="detail" style="margin-top:10px;">
+                    <span class="tagline">Exemplo simples</span>
+                    Se você pagar R$ 10 por cada coco que um macaco entregar, e R$ 1 por cada banana, o macaco vai trazer cocos. Políticos são iguais. Se o voto premia quem distribui emenda, eles distribuirão emendas. Mude a recompensa, mude o comportamento.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚫</div>
+                <h3>Isso não é comunismo. É gestão.</h3>
+                <p style="font-size:0.9rem; color:var(--text2);">Cortar supersalários, fundir municípios zumbis e taxar dividendos não tem nada a ver com socialismo. A <strong>Suíça</strong> taxa dividendos. A <strong>Dinamarca</strong> demite servidor incompetente. A <strong>Alemanha</strong> não tem fundão eleitoral. Nenhum desses países é comunista. São capitalistas que fizeram a lição de casa.</p>
+                <div class="detail" style="margin-top:10px;">
+                    <span class="tagline">Na prática</span>
+                    O Brasil gasta <strong>33% do PIB em impostos</strong>. A média da América Latina é 23%. O problema não é "faltar dinheiro". É o dinheiro ser sugado por uma máquina ineficiente e por uma casta que não paga imposto sobre lucro.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔄</div>
+                <h3>A mudança é técnica, não emocional</h3>
+                <p style="font-size:0.9rem; color:var(--text2);">As 5 medidas do Plano Nacional acima não exigem fechar o Congresso, prender opositores ou cancelar eleições. Exigem <strong>votos</strong>. Exigem que a população entenda os incentivos e pressione. É um processo lento, chato, burocrático. Mas é o único que funciona sem quebrar tudo.</p>
+                <div class="detail" style="margin-top:10px;">
+                    <span class="tagline">Lembrete</span>
+                    A Nova Zelândia passou de um dos países mais regulados do mundo para um dos mais livres em 10 anos — com votações no parlamento, não com fuzil. O que faltou lá foi histeria ideológica. O que sobrou foi pragmatismo.
+                </div>
+            </div>
+        </div>
+
+        <div class="big-alert" style="margin-top: 20px;">
+            <span class="alert-icon">⚡</span>
+            <div>
+                <strong>Não caia na armadilha.</strong> Toda vez que alguém propõe cortar privilégio, o sistema grita "é o fim da democracia" ou "é comunismo". Isso é autodefesa. O parasita sempre chama o remédio de veneno. As ideias aqui não têm bandeira. Têm lógica. E a lógica não precisa de revolução — só precisa ser aplicada.
             </div>
         </div>
     </div>
@@ -560,7 +605,7 @@
 
 <footer>
     <div class="container">
-        <p>Fontes: IBGE, Tesouro Nacional, TCU, Transparência Brasil, Impostômetro (ACSP), Firjan, CLP, Câmara dos Deputados (dados de votações).</p>
+        <p>Fontes: IBGE, Tesouro Nacional, TCU, Transparência Brasil, Impostômetro (ACSP), Firjan, CLP, Câmara dos Deputados.</p>
         <p>Nenhum partido, político ou empresa financia esta página.</p>
     </div>
 </footer>
