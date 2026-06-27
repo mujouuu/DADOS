@@ -159,6 +159,23 @@
         }
         .btn:hover { background: #e53935; }
 
+        /* Impostômetro em tempo real */
+        .ticker-box {
+            background: var(--surface); border: 1px solid #333;
+            border-radius: var(--radius); padding: 20px 24px;
+            margin: 20px 0; text-align: center;
+        }
+        .ticker-box .ticker-label {
+            font-size: 0.8rem; text-transform: uppercase;
+            font-weight: 700; color: #888; letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .ticker-box .ticker-value {
+            font-family: 'Courier New', monospace;
+            font-size: 2rem; font-weight: 900; color: var(--red-glow);
+            word-break: break-all;
+        }
+
         footer {
             text-align: center; padding: 36px 0; color: #555;
             font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 40px;
@@ -198,44 +215,66 @@
         <h2>O que está acontecendo de fato</h2>
         <p class="subtitle">Números que afetam sua vida, sem filtro ideológico.</p>
 
+        <!-- Ticker do Impostômetro -->
+        <div class="ticker-box">
+            <div class="ticker-label">🏛️ Impostos pagos pelos brasileiros em 2025</div>
+            <div class="ticker-value" id="impostometro">Carregando...</div>
+            <p style="font-size:0.8rem; color:var(--text2); margin-top:6px;">
+                Fonte: Impostômetro — Associação Comercial de São Paulo (ACSP).<br>
+                Em 2024, o total arrecadado foi de <strong>R$ 3,9 trilhões</strong>.
+            </p>
+        </div>
+
         <div class="grid">
             <!-- Card 1 -->
             <div class="card">
                 <div class="icon">💰</div>
-                <h3>Carga tributária recorde</h3>
-                <div class="number red">33,2%</div>
-                <p style="font-size:0.9rem; color:var(--text2);">do PIB em 2024. Maior valor desde 1991.</p>
+                <h3>Trabalha quase 5 meses só pra pagar imposto</h3>
+                <div class="number red">147 dias</div>
+                <p style="font-size:0.9rem; color:var(--text2);">do seu ano vão embora em tributos.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    A cada <strong>R$ 100</strong> que o Brasil produz, <strong>R$ 33,20</strong> ficam com o governo. Você trabalha <strong>4 meses por ano</strong> só para pagar imposto embutido em salário, consumo, conta de luz e gasolina.
+                    Com a carga tributária de <strong>33,2% do PIB</strong>, cada brasileiro trabalha de <strong>1 de janeiro até 27 de maio</strong> só para pagar imposto. É o "Dia da Libertação Fiscal". Só depois dessa data o dinheiro é realmente seu.
                 </div>
             </div>
 
             <!-- Card 2 -->
             <div class="card">
-                <div class="icon">🛒</div>
-                <h3>Comida sobe, salário não acompanha</h3>
-                <div class="number red">+18%</div>
-                <p style="font-size:0.9rem; color:var(--text2);">inflação de alimentos em casa (jan/23 a fev/25).</p>
+                <div class="icon">📊</div>
+                <h3>Arrecadação bate recorde atrás de recorde</h3>
+                <div class="number red">R$ 3,9 tri</div>
+                <p style="font-size:0.9rem; color:var(--text2);">arrecadados em 2024. Recorde histórico.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    O <strong>café</strong> foi de R$ 15 para R$ 24. A <strong>laranja</strong> dobrou. Seu salário não subiu 18% nesse período. Ou seja, você está <strong>mais pobre</strong> fazendo as mesmas compras de antes.
+                    Em <strong>2024</strong>, União, estados e municípios tiraram <strong>R$ 3.912.000.000.000</strong> da economia. Em <strong>2023</strong> foram R$ 3,5 tri. Em <strong>2019</strong> (pré-pandemia), R$ 2,4 tri. A máquina só cresce, governo após governo.
                 </div>
             </div>
 
             <!-- Card 3 -->
             <div class="card">
-                <div class="icon">📄</div>
-                <h3>Imposto de Renda que corrói</h3>
-                <div class="number red">8 anos</div>
-                <p style="font-size:0.9rem; color:var(--text2);">com a tabela congelada para a classe média.</p>
+                <div class="icon">🛒</div>
+                <h3>Comida sobe muito mais que seu salário</h3>
+                <div class="number red">+18%</div>
+                <p style="font-size:0.9rem; color:var(--text2);">inflação de alimentos em casa (jan/23 a fev/25).</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    Quem ganhava <strong>R$ 3.000</strong> em 2015 pagava <strong>R$ 62</strong> de IR. Hoje paga <strong>R$ 220</strong>, mesmo sem aumento real. A inflação corrói seu poder de compra, mas a Receita trata você como se tivesse enriquecido.
+                    O <strong>café</strong> foi de R$ 15 para R$ 24. A <strong>laranja</strong> dobrou. Seu salário não subiu 18% no período. Resultado: você está <strong>mais pobre</strong> fazendo as mesmas compras de antes.
                 </div>
             </div>
 
             <!-- Card 4 -->
+            <div class="card">
+                <div class="icon">📄</div>
+                <h3>Imposto de Renda corrói seu salário</h3>
+                <div class="number red">8 anos</div>
+                <p style="font-size:0.9rem; color:var(--text2);">com a tabela congelada para a classe média.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    Quem ganhava <strong>R$ 3.000</strong> em 2015 pagava <strong>R$ 62</strong> de IR. Hoje paga <strong>R$ 220</strong>, mesmo sem aumento real. A inflação corrói seu poder de compra, mas a Receita finge que você enriqueceu.
+                </div>
+            </div>
+
+            <!-- Card 5 -->
             <div class="card">
                 <div class="icon">📦</div>
                 <h3>Taxaram sua compra online</h3>
@@ -243,11 +282,23 @@
                 <p style="font-size:0.9rem; color:var(--text2);">de imposto sobre produtos de até US$ 50.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    Uma roupa de <strong>R$ 50</strong> na internet agora chega com <strong>R$ 22</strong> de tributo. Antes, compras pequenas eram isentas. O imposto foi criado em 2024. Quem mais sente é a dona de casa e o jovem sem grana.
+                    Uma roupa de <strong>R$ 50</strong> na internet chega com <strong>R$ 22</strong> de tributo. Antes, compras pequenas eram isentas. O imposto foi criado em 2024. Quem mais sente é quem tem menos dinheiro.
                 </div>
             </div>
 
-            <!-- Card 5 -->
+            <!-- Card 6 -->
+            <div class="card">
+                <div class="icon">🏠</div>
+                <h3>Imposto embutido em tudo que você consome</h3>
+                <div class="number red">42%</div>
+                <p style="font-size:0.9rem; color:var(--text2);">de tributo em média nos produtos.</p>
+                <div class="detail">
+                    <span class="tagline">Na prática</span>
+                    Uma <strong>conta de luz de R$ 200</strong> tem cerca de <strong>R$ 84</strong> em impostos. Um <strong>litro de gasolina a R$ 6</strong> tem cerca de <strong>R$ 2,70</strong> de tributo. Você paga imposto sobre imposto em cascata o tempo todo.
+                </div>
+            </div>
+
+            <!-- Card 7 -->
             <div class="card">
                 <div class="icon">🍽️</div>
                 <h3>Menos fome (sim, é verdade)</h3>
@@ -255,19 +306,19 @@
                 <p style="font-size:0.9rem; color:var(--text2);">de pessoas saíram da fome entre 2021 e 2023.</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    Em 2021, <strong>33 milhões</strong> de brasileiros passavam fome severa. Em 2023, o número caiu para <strong>8,7 milhões</strong>. O Bolsa Família turbinado e o emprego ajudaram. Isso é fato, não torcida.
+                    Em 2021, <strong>33 milhões</strong> de brasileiros passavam fome severa. Em 2023, o número caiu para <strong>8,7 milhões</strong>. O Bolsa Família e o emprego ajudaram. Isso é fato, não torcida.
                 </div>
             </div>
 
-            <!-- Card 6 -->
+            <!-- Card 8 -->
             <div class="card">
                 <div class="icon">👷</div>
-                <h3>Desemprego no menor nível</h3>
+                <h3>Desemprego no menor nível histórico</h3>
                 <div class="number green">6,5%</div>
                 <p style="font-size:0.9rem; color:var(--text2);">menor taxa em décadas (jan/2025).</p>
                 <div class="detail">
                     <span class="tagline">Na prática</span>
-                    Mais gente trabalhando. Mas o <strong>salário médio</strong> não subiu o suficiente para cobrir a inflação. Você está empregado, mas o dinheiro compra <strong>menos coisas</strong> do que comprava há 3 anos.
+                    Mais gente trabalhando. Mas o <strong>salário médio</strong> não subiu o suficiente para cobrir a inflação. Você está empregado, mas o dinheiro compra <strong>menos coisas</strong> do que há 3 anos.
                 </div>
             </div>
         </div>
@@ -285,7 +336,7 @@
             <div class="card">
                 <div class="icon">🔄</div>
                 <h3>Você só vê o que já acredita</h3>
-                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Chama-se viés de confirmação. O algoritmo te mostra mais daquilo que você clica.</p>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Viés de confirmação. O algoritmo te alimenta com mais do mesmo.</p>
                 <div class="detail">
                     <span class="tagline">Exemplo</span>
                     Se você acredita que o país quebrou, seu feed só mostra crise. Se acredita que está tudo bem, só vê progresso. <strong>Nenhum dos dois lados vê o quadro completo.</strong>
@@ -295,32 +346,32 @@
             <div class="card">
                 <div class="icon">😡</div>
                 <h3>Raiva vende mais que informação</h3>
-                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Post indignado gera mais clique, mais compartilhamento, mais anúncio.</p>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Indignação gera clique, compartilhamento, anúncio.</p>
                 <div class="detail">
                     <span class="tagline">Exemplo</span>
-                    "Governo anuncia nova regra fiscal" → 500 leituras.<br>
-                    "Governo quer enfiar a mão no seu bolso" → 500 mil leituras.<br>
-                    <strong>Você é o produto.</strong> A indignação é o combustível.
+                    "Governo anuncia regra fiscal" → 500 leituras.<br>
+                    "Governo quer meter a mão no seu bolso" → 500 mil.<br>
+                    <strong>Você é o produto.</strong> A raiva é o combustível.
                 </div>
             </div>
 
             <div class="card">
                 <div class="icon">🎭</div>
                 <h3>Os dois lados precisam do conflito</h3>
-                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Sem um "inimigo", o discurso político desaba.</p>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Sem "inimigo", o discurso político desmorona.</p>
                 <div class="detail">
                     <span class="tagline">Exemplo</span>
-                    É um teatro: um sobe no palco e diz "o outro vai destruir o país". A plateia briga. Enquanto isso, <strong>ambos governaram com o mesmo Centrão</strong> e mantiveram a estrutura que suga 33% do PIB.
+                    É um teatro: um sobe no palco e grita "o outro vai destruir o país". A plateia briga. Enquanto isso, <strong>ambos governaram com o mesmo Centrão</strong> e mantiveram a máquina que suga 33% do PIB.
                 </div>
             </div>
 
             <div class="card">
                 <div class="icon">🎯</div>
                 <h3>O alvo real está escondido</h3>
-                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Não é o eleitor do outro lado. É o sistema que os dois protegem.</p>
+                <p style="font-size:0.9rem; color:var(--text2); margin-bottom: 8px;">Não é o eleitor do outro lado. É o sistema que ambos protegem.</p>
                 <div class="detail">
                     <span class="tagline">Exemplo</span>
-                    Você paga a 2ª maior taxa de juros do mundo, imposto sobre imposto, e ainda pega fila no SUS e estrada esburacada. <strong>O problema não é a camisa vermelha ou verde-amarela.</strong> É o sistema que cobra caro e entrega pouco.
+                    Você paga a 2ª maior taxa de juros do mundo, imposto sobre imposto, e ainda enfrenta fila no SUS e estrada esburacada. <strong>O problema não é a camisa vermelha ou verde-amarela.</strong> É o sistema que cobra caro e entrega pouco.
                 </div>
             </div>
         </div>
@@ -346,7 +397,7 @@
             <div class="step-num">2</div>
             <div class="step-text">
                 <h4>Troque ídolo por número</h4>
-                <p>Antes de repetir frase de político, cheque IBGE, IPCA, Receita Federal. Dado não tem partido. Se o número contradiz seu político favorito, largue o político, não o número.</p>
+                <p>Antes de repetir frase de político, cheque IBGE, IPCA, Receita Federal, Impostômetro. Dado não tem partido. Se o número contradiz seu político favorito, largue o político, não o número.</p>
             </div>
         </div>
 
@@ -384,10 +435,43 @@
 
 <footer>
     <div class="container">
-        <p>Fontes oficiais: IBGE, Tesouro Nacional, Receita Federal, PNAD Contínua.</p>
+        <p>Fontes oficiais: IBGE, Tesouro Nacional, Receita Federal, PNAD Contínua, Impostômetro (ACSP).</p>
         <p>Este site não recebe um centavo de partido, político ou empresa.</p>
     </div>
 </footer>
+
+<!-- Script do Impostômetro em tempo real -->
+<script>
+    // Estimativa do Impostômetro para 2025
+    // Base: arrecadação de R$ 3,9 trilhões em 2024, crescimento estimado de ~7% para 2025 = ~R$ 4,17 tri
+    // R$ 4.170.000.000.000 / 365 dias / 24 horas / 60 minutos / 60 segundos = ~R$ 132.200 por segundo
+    const startOfYear = new Date(2025, 0, 1).getTime(); // 1 de janeiro de 2025 00:00:00
+    const arrecadacaoAnualEstimada = 4170000000000; // R$ 4,17 trilhões
+    const segundosNoAno = 365 * 24 * 60 * 60;
+    const porSegundo = arrecadacaoAnualEstimada / segundosNoAno;
+
+    function atualizarImpostometro() {
+        const agora = new Date().getTime();
+        const segundosPassados = (agora - startOfYear) / 1000;
+        let acumulado = porSegundo * segundosPassados;
+
+        // Ajusta para não ultrapassar o ano
+        if (segundosPassados >= segundosNoAno) {
+            acumulado = arrecadacaoAnualEstimada;
+        }
+
+        const el = document.getElementById('impostometro');
+        if (el) {
+            el.textContent = 'R$ ' + acumulado.toLocaleString('pt-BR', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+    }
+
+    atualizarImpostometro();
+    setInterval(atualizarImpostometro, 1000);
+</script>
 
 </body>
 </html>
